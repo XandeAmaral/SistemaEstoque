@@ -85,13 +85,10 @@ namespace Estoque_2Semestre
                 throw new Exception("Erro ApenasNumeros:" + ex.Message);
             }
 }
-        public bool VerificaVazio(string palavra)
+        public int NaoVazio (string palavra)
         {
-            if (palavra.Length > 0)
-            {
-                return (true);
-            }
-            return (false);
+            if (string.IsNullOrEmpty(palavra)) return 1;
+            else return 0;
         }
     }
 }

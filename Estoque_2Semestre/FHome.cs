@@ -12,9 +12,16 @@ namespace Estoque_2Semestre
 {
     public partial class FHome : Form
     {
+        public string nome;
+        public bool admin;
+
         public FHome()
         {
             InitializeComponent();
+        }
+        private void FHome_Load(object sender, EventArgs e)
+        {
+            if (!(string.IsNullOrEmpty(this.nome)))  lblUsuario.Text = this.nome; 
         }
 
         private void pedidoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -31,8 +38,12 @@ namespace Estoque_2Semestre
 
         private void usuarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FConsultaUsuario f = new FConsultaUsuario();
-            f.ShowDialog();
+            if (admin)
+            {
+                FConsultaUsuario f = new FConsultaUsuario();
+                f.ShowDialog();
+            }
+            else MessageBox.Show("Permitido so para administradores.");
         }
 
         private void pedidoToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -49,8 +60,14 @@ namespace Estoque_2Semestre
 
         private void usuarioToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            FCrudUsuario f = new FCrudUsuario();
-            f.ShowDialog();
+            if (admin)
+            {
+                FCrudUsuario f = new FCrudUsuario();
+                f.ShowDialog();
+            }
+            else MessageBox.Show("Permitido so para administradores.");
         }
+
+        
     }
 }

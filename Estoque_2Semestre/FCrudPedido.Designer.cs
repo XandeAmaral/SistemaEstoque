@@ -43,11 +43,11 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.lstPedido = new System.Windows.Forms.ListView();
             this.txtNPedido = new System.Windows.Forms.TextBox();
-            this.txtFornecedor = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtCNPJ = new System.Windows.Forms.TextBox();
             this.txtTelefone = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.cmbFornecedor = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // label1
@@ -186,13 +186,6 @@
             this.txtNPedido.TabIndex = 14;
             this.txtNPedido.TextChanged += new System.EventHandler(this.txtNPedido_TextChanged);
             // 
-            // txtFornecedor
-            // 
-            this.txtFornecedor.Location = new System.Drawing.Point(33, 174);
-            this.txtFornecedor.Name = "txtFornecedor";
-            this.txtFornecedor.Size = new System.Drawing.Size(227, 20);
-            this.txtFornecedor.TabIndex = 15;
-            // 
             // txtEmail
             // 
             this.txtEmail.Location = new System.Drawing.Point(33, 231);
@@ -223,16 +216,24 @@
             this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
             this.dateTimePicker1.TabIndex = 19;
             // 
+            // cmbFornecedor
+            // 
+            this.cmbFornecedor.FormattingEnabled = true;
+            this.cmbFornecedor.Location = new System.Drawing.Point(33, 174);
+            this.cmbFornecedor.Name = "cmbFornecedor";
+            this.cmbFornecedor.Size = new System.Drawing.Size(227, 21);
+            this.cmbFornecedor.TabIndex = 20;
+            // 
             // FCrudPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(623, 503);
+            this.Controls.Add(this.cmbFornecedor);
             this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.txtTelefone);
             this.Controls.Add(this.txtCNPJ);
             this.Controls.Add(this.txtEmail);
-            this.Controls.Add(this.txtFornecedor);
             this.Controls.Add(this.txtNPedido);
             this.Controls.Add(this.lstPedido);
             this.Controls.Add(this.btnCancelar);
@@ -272,10 +273,10 @@
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.ListView lstPedido;
         private System.Windows.Forms.TextBox txtNPedido;
-        private System.Windows.Forms.TextBox txtFornecedor;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtCNPJ;
         private System.Windows.Forms.TextBox txtTelefone;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.ComboBox cmbFornecedor;
     }
 }

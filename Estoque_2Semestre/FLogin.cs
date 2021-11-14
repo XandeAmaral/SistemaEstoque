@@ -12,57 +12,58 @@ namespace Estoque_2Semestre
 {
     public partial class FLogin : Form
     {
-        public string nomeUsuario;
-        private string usuarioTeste = "Ale";
-        private string senhaTeste = "12a";
-
         public FLogin()
         {
-            nomeUsuario = "";
             InitializeComponent();
-            // limpar o Login toda vez q voltar para essa tela.
         }
 
         private void btnAcessar_Click(object sender, EventArgs e)
         {
+            Usuario Us;
             string login = txtNome.Text.Trim();
             string senha = txtSenha.Text.Trim();
-            string descr = "";
 
-            if (string.IsNullOrEmpty(login) || string.IsNullOrEmpty(senha))
-            {// valida se nao estao vazios
-                MessageBox.Show("Digite um valor.");
-                txtNome.Focus();
-            }
-            else
-            {// faz o teste de acesso
-                descr = fazerlogin(login, senha); // funcao de teste
+            try
+            {
+                Us = new Usuario();
 
-                if (string.IsNullOrEmpty(descr))
-                {
-                    MessageBox.Show("Login com sucesso.");
-                    FHome f = new FHome();
-                    this.Hide();
-                    f.ShowDialog();
-                    this.Close();
+                if (this.TestarElementos() == 0)
+                { // verifica se todos os campos estao preenchidos
+
+                    if (Us.fazerLogin(login, senha))
+                    {  // funcao de login
+
+                        MessageBox.Show("Sucesso no Login");
+                        FHome f = new FHome();
+
+                        f.nome = Us.nome;
+                        f.admin = Us.administrador;
+
+                        this.Hide();
+                        f.ShowDialog();
+                        this.Close();
+                    }
+                    else MessageBox.Show("Usuario ou senha errados.");
                 }
-                else
-                {
-                    MessageBox.Show(descr);
-                    txtNome.Focus();
-                }
+                else { MessageBox.Show("Preencha todos os campos."); txtNome.Focus(); }
             }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
+        private int TestarElementos()
+        {// testa para ver se todos os elementos tem valor
+            int aux = 1;
+            Validacoes Va;
 
-        private string fazerlogin(string login, string senha)
-        {
-            string descr="";
+            try
+            {
+                Va = new Validacoes();
 
-            if (login != usuarioTeste) { descr = "Usuario nao encontrado"; }
-            else if (senha != senhaTeste) { descr = "Senha invalida"; }
-            else descr = "";
+                aux += Va.NaoVazio(this.txtNome.Text);
+                aux += Va.NaoVazio(this.txtSenha.Text);
 
-            return descr;
+                return aux;
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); return aux; }
         }
     }
 }

@@ -45,7 +45,7 @@
             this.txtConfirmarSenha = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.lblUsuario = new System.Windows.Forms.Label();
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.chkAdminstrador = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // label1
@@ -121,6 +121,7 @@
             this.btnAlterar.TabIndex = 7;
             this.btnAlterar.Text = "Alterar";
             this.btnAlterar.UseVisualStyleBackColor = true;
+            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
             // 
             // btnRemover
             // 
@@ -130,6 +131,7 @@
             this.btnRemover.TabIndex = 8;
             this.btnRemover.Text = "Remover";
             this.btnRemover.UseVisualStyleBackColor = true;
+            this.btnRemover.Click += new System.EventHandler(this.btnRemover_Click);
             // 
             // Cancelar
             // 
@@ -147,11 +149,13 @@
             this.txtNome.Size = new System.Drawing.Size(224, 20);
             this.txtNome.TabIndex = 10;
             this.txtNome.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtNome_KeyUp);
+            this.txtNome.Leave += new System.EventHandler(this.txtNome_Leave);
             // 
             // txtLogin
             // 
             this.txtLogin.Location = new System.Drawing.Point(40, 205);
             this.txtLogin.Name = "txtLogin";
+            this.txtLogin.ReadOnly = true;
             this.txtLogin.Size = new System.Drawing.Size(175, 20);
             this.txtLogin.TabIndex = 11;
             // 
@@ -166,6 +170,7 @@
             // 
             this.txtSenha.Location = new System.Drawing.Point(40, 305);
             this.txtSenha.Name = "txtSenha";
+            this.txtSenha.PasswordChar = '*';
             this.txtSenha.Size = new System.Drawing.Size(193, 20);
             this.txtSenha.TabIndex = 13;
             // 
@@ -173,6 +178,7 @@
             // 
             this.txtConfirmarSenha.Location = new System.Drawing.Point(40, 357);
             this.txtConfirmarSenha.Name = "txtConfirmarSenha";
+            this.txtConfirmarSenha.PasswordChar = '*';
             this.txtConfirmarSenha.Size = new System.Drawing.Size(193, 20);
             this.txtConfirmarSenha.TabIndex = 14;
             // 
@@ -194,22 +200,22 @@
             this.lblUsuario.TabIndex = 16;
             this.lblUsuario.Text = ".";
             // 
-            // checkBox1
+            // chkAdminstrador
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(309, 156);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(89, 17);
-            this.checkBox1.TabIndex = 17;
-            this.checkBox1.Text = "Administrador";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.chkAdminstrador.AutoSize = true;
+            this.chkAdminstrador.Location = new System.Drawing.Point(309, 156);
+            this.chkAdminstrador.Name = "chkAdminstrador";
+            this.chkAdminstrador.Size = new System.Drawing.Size(89, 17);
+            this.chkAdminstrador.TabIndex = 17;
+            this.chkAdminstrador.Text = "Administrador";
+            this.chkAdminstrador.UseVisualStyleBackColor = true;
             // 
             // FCrudUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.chkAdminstrador);
             this.Controls.Add(this.lblUsuario);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtConfirmarSenha);
@@ -253,6 +259,6 @@
         private System.Windows.Forms.TextBox txtConfirmarSenha;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label lblUsuario;
-        private System.Windows.Forms.CheckBox checkBox1;
+        private System.Windows.Forms.CheckBox chkAdminstrador;
     }
 }

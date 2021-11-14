@@ -15,7 +15,7 @@ namespace Estoque_2Semestre
         private Validacoes validacoes;
         private void txtNPedido_TextChanged(object sender, EventArgs e)
         {
-            if (txtNPedido.Text.Length > 0)
+            if (!(string.IsNullOrEmpty(txtCNPJ.Text.Trim())))
             {
                 if (validacoes.ApenasNumeros(txtNPedido.Text.ToString()[txtNPedido.Text.Length - 1]))
                 {
@@ -27,7 +27,7 @@ namespace Estoque_2Semestre
         }
         private void txtCNPJ_KeyUp(object sender, KeyEventArgs e)
         {
-            if (txtCNPJ.Text.Length > 0)
+            if (!(string.IsNullOrEmpty(txtCNPJ.Text.Trim())))
             {
                 if (validacoes.ApenasNumeros(txtCNPJ.Text.ToString()[txtCNPJ.Text.Length - 1]))
                 {
@@ -39,7 +39,7 @@ namespace Estoque_2Semestre
         }
         private void txtTelefone_KeyUp(object sender, KeyEventArgs e)
         {
-            if (validacoes.VerificaVazio(txtTelefone.Text))
+            if (!(string.IsNullOrEmpty(txtTelefone.Text.Trim())))
             {
                 MessageBox.Show("VerificaVazio OK.");
                 if (validacoes.ApenasNumeros(txtTelefone.Text.ToString()[txtTelefone.Text.Length - 1]))
