@@ -141,6 +141,7 @@
             this.Cancelar.TabIndex = 9;
             this.Cancelar.Text = "Cancelar";
             this.Cancelar.UseVisualStyleBackColor = true;
+            this.Cancelar.Click += new System.EventHandler(this.Cancelar_Click);
             // 
             // txtNome
             // 
@@ -235,6 +236,7 @@
             this.Controls.Add(this.label1);
             this.Name = "FCrudUsuario";
             this.Text = "Controle de Usuarios";
+            this.Load += new System.EventHandler(this.FCrudUsuario_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

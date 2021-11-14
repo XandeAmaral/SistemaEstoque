@@ -30,18 +30,18 @@ namespace Estoque_2Semestre
                 if (this.TestarElementos() == 0)
                 { // verifica se todos os campos estao preenchidos
 
-                    if (Us.fazerLogin(login, senha))
+                    Us = Us.fazerLogin(login, senha); // faz o login e ja alimenta o objeto com os dados
+
+                    if (Us != null)
                     {  // funcao de login
 
                         MessageBox.Show("Sucesso no Login");
-                        FHome f = new FHome();
+                        FHome f = new FHome(Us); // passa o Usuario Logado para os proximos Forms
 
-                        f.nome = Us.nome;
-                        f.admin = Us.administrador;
-
-                        this.Hide();
-                        f.ShowDialog();
-                        this.Close();
+                        this.Hide(); // esconde essa tela de Login
+                        f.ShowDialog(); // Abre o Menu
+                        this.Close(); // Caso o Menu feche o programa tambem fecha
+                        // obs: da para fazer ele voltar a tela de login
                     }
                     else MessageBox.Show("Usuario ou senha errados.");
                 }
@@ -51,7 +51,7 @@ namespace Estoque_2Semestre
         }
         private int TestarElementos()
         {// testa para ver se todos os elementos tem valor
-            int aux = 1;
+            int aux = 0;
             Validacoes Va;
 
             try

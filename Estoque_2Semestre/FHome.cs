@@ -12,16 +12,20 @@ namespace Estoque_2Semestre
 {
     public partial class FHome : Form
     {
-        public string nome;
-        public bool admin;
+        public readonly Usuario UsLogado; //objeto do Usuario Logado
 
         public FHome()
         {
             InitializeComponent();
         }
-        private void FHome_Load(object sender, EventArgs e)
+        public FHome(Usuario usuario)
         {
-            if (!(string.IsNullOrEmpty(this.nome)))  lblUsuario.Text = this.nome; 
+            InitializeComponent();
+            UsLogado = usuario;
+        }
+        private void FHome_Load(object sender, EventArgs e) // coloca o nome do UsLogado
+        {
+            lblUsuario.Text = UsLogado.nome;
         }
 
         private void pedidoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -38,7 +42,7 @@ namespace Estoque_2Semestre
 
         private void usuarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (admin)
+            if (this.UsLogado.administrador)
             {
                 FConsultaUsuario f = new FConsultaUsuario();
                 f.ShowDialog();
@@ -60,14 +64,22 @@ namespace Estoque_2Semestre
 
         private void usuarioToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            if (admin)
+            if (this.UsLogado.administrador)
             {
-                FCrudUsuario f = new FCrudUsuario();
+                FCrudUsuario f = new FCrudUsuario(UsLogado); //passa o UsLogado
                 f.ShowDialog();
             }
             else MessageBox.Show("Permitido so para administradores.");
         }
 
-        
+        private void fornecedorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.UsLogado.administrador)
+            {
+                FCrudFornecedor f = new FCrudFornecedor(UsLogado); //passa o UsLogado
+                f.ShowDialog();
+            }
+            else MessageBox.Show("Permitido so para administradores.");
+        }
     }
 }

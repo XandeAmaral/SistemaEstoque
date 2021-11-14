@@ -42,6 +42,7 @@
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(198, 20);
             this.txtNome.TabIndex = 0;
+            this.txtNome.Text = "aamaral";
             // 
             // txtSenha
             // 
@@ -50,6 +51,7 @@
             this.txtSenha.PasswordChar = '*';
             this.txtSenha.Size = new System.Drawing.Size(198, 20);
             this.txtSenha.TabIndex = 1;
+            this.txtSenha.Text = "123a";
             // 
             // label1
             // 

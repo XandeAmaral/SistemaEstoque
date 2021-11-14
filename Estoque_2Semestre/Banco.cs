@@ -21,7 +21,7 @@ namespace Estoque_2Semestre
             {
                 if ((conexao == null) || (conexao.State != ConnectionState.Open))
                 {
-                    conexao = new NpgsqlConnection("Server=127.0.0.1;Port=5432;User Id=postgres;Password=fatec;Database=teste");
+                    conexao = new NpgsqlConnection("Server=127.0.0.1;Port=5432;User Id=postgres;Password=fatec;Database=Estoque");
                     conexao.Open();
                 }
                 comando = new NpgsqlCommand();

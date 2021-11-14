@@ -63,7 +63,7 @@ namespace Estoque_2Semestre
               //  pe.gravar(); // função da classe Pedido
 
                 this.txtCNPJ.Clear(); // limpa o textbox
-                this.txtFornecedor.Clear();
+  //              this.cmbFornecedor.Items.Clear();
                 this.txtTelefone.Clear();
                 this.txtEmail.Clear();
                 this.txtNPedido.Clear();

@@ -17,14 +17,13 @@ namespace Estoque_2Semestre
         {
             try
             {
-
                 if (caracter >= '0' && caracter <= '9')
                 { // se estiver dentro de 0 - 9
-                    return false;
+                    return true;
                 }
                 else
                 {
-                    return true;
+                    return false;
                 }
             }
             catch (Exception ex) { throw new Exception("Erro ApenasLetras:" + ex.Message); }
@@ -37,11 +36,11 @@ namespace Estoque_2Semestre
                 {
                     if (letra >= '0' && letra <= '9')
                     { // se estiver dentro de 0 - 9
-                        return false;
+                        return true;
                     }
                     else
                     {
-                        return true;
+                        return false;
                     }
                 }
                 return true;
@@ -54,11 +53,11 @@ namespace Estoque_2Semestre
             {
                 if (caracter >= '0' && caracter <= '9')
                 { // se estiver dentro de 0 - 9
-                    return true;
+                    return false;
                 }
                 else
                 {
-                    return false;
+                    return true;
                 }
             }
             catch (Exception ex) { throw new Exception("Erro ApenasNumeros:" + ex.Message); }
@@ -71,11 +70,11 @@ namespace Estoque_2Semestre
                 {
                     if (letra >= '0' && letra <= '9')
                     { // se estiver dentro de 0 - 9
-                        return true;
+                        return false;
                     }
                     else
                     {
-                        return false;
+                        return true;
                     }
                 }
                 return false;

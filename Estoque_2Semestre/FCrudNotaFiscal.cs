@@ -12,7 +12,7 @@ namespace Estoque_2Semestre
 {
     public partial class FCrudNotaFiscal : Form
     {
-        Validacoes validacoes;
+        internal Validacoes validacoes;
         public FCrudNotaFiscal()
         {
             InitializeComponent();            
