@@ -74,24 +74,72 @@ namespace Estoque_2Semestre
                 Banco.conexao.Close();
             }
             // dispara uma exceção.
-            catch (Exception ex) { throw new Exception("Erro gravar:" + ex.Message); }
+            catch (Exception ex) { throw new Exception("Erro cadastrar:" + ex.Message); }
 
         }
 
-        public void buscar(int cod)
+        public DataTable buscaNome(string n) // busca por um nome
         {
+            Banco BB;
+            try
+            {
+                BB = new Banco();
+                if (n.Length > 0)
+                {
+                    BB.comando.CommandText = "Select codusuario, nome, administrador, login, email from usuario where nome ilike '@n'";
+                    BB.comando.Parameters.Add("@n", NpgsqlTypes.NpgsqlDbType.Varchar).Value = "%" + n + "%";
+                    BB.comando.Prepare();
+                }
+                else
+                {
+                    BB.comando.CommandText = "Select codusuario, nome, administrador, login, email from usuario";
+                }
+
+                BB.dreader = BB.comando.ExecuteReader();
+                BB.tabela = new DataTable();
+                BB.tabela.Load(BB.dreader);
+                Banco.conexao.Close();
+                return (BB.tabela);
+            }
+            catch (Exception ex) { throw new Exception("Erro Busca: " + ex.Message); }
 
         }
 
-        public void alterar(int cod)
+        public void alterar()
         {
+            Banco BB;
+            try
+            {
+                BB = new Banco();
+                BB.comando.CommandText = "update usuario set nome=@n, senha=@s, email=@e,administrador=@a where codusuario=@c";
+                BB.comando.Parameters.Add("@n", NpgsqlTypes.NpgsqlDbType.Varchar).Value = this.nome;
+                BB.comando.Parameters.Add("@s", NpgsqlTypes.NpgsqlDbType.Varchar).Value = this.senha;
+                BB.comando.Parameters.Add("@e", NpgsqlTypes.NpgsqlDbType.Varchar).Value = this.email;
+                BB.comando.Parameters.Add("@a", NpgsqlTypes.NpgsqlDbType.Boolean).Value = this.administrador;
+                BB.comando.Parameters.Add("@c", NpgsqlTypes.NpgsqlDbType.Integer).Value = this.codigo;
+                BB.comando.Prepare();
+                BB.comando.ExecuteNonQuery();
+                Banco.conexao.Close();
+            }
+            catch (Exception ex) { throw new Exception("Erro alterar:" + ex.Message); }
 
         }        
         
-        public void remover(int cod)
+        public void remover()
         {
-
+            Banco BB;
+            try
+            {
+                BB = new Banco();
+                BB.comando.CommandText = "Delete from usuario where codusuario=@c";
+                BB.comando.Parameters.Add("@c", NpgsqlTypes.NpgsqlDbType.Integer).Value = this.codigo;
+                BB.comando.Prepare();
+                BB.comando.ExecuteNonQuery();
+                Banco.conexao.Close();
+            }
+            catch (Exception ex) { throw new Exception("Erro remover:" + ex.Message); }
         }
+
         public Usuario fazerLogin(string l, string s) // faz o login e retorna o nome  e codigo
         {
             Banco BB;
@@ -101,7 +149,8 @@ namespace Estoque_2Semestre
                 BB = new Banco();
                 Us = new Usuario();
                 
-                BB.comando.CommandText = "Select codusuario,nome,administrador,email,login from usuario where login = @l and senha = @s";
+                BB.comando.CommandText = "Select codusuario,nome,administrador,email,login from usuario where login = @l" +
+                    " and senha = @s";
                 BB.comando.Parameters.Add("@l", NpgsqlTypes.NpgsqlDbType.Varchar).Value = l;
                 BB.comando.Parameters.Add("@s", NpgsqlTypes.NpgsqlDbType.Varchar).Value = s;
                 BB.comando.Prepare();
@@ -125,6 +174,23 @@ namespace Estoque_2Semestre
                 }
             }
             catch (Exception ex) { throw new Exception("Erro fazerLogin: " + ex.Message); }
+        }
+
+        public DataTable listar() // lista todos os usuarios
+        {
+            Banco BB;
+            try
+            {
+                BB = new Banco();
+                BB.comando.CommandText = "Select codusuario, nome, administrador, login, email from usuario";
+                BB.comando.Prepare();
+                BB.dreader = BB.comando.ExecuteReader();
+                BB.tabela = new DataTable();
+                BB.tabela.Load(BB.dreader);
+                Banco.conexao.Close();
+                return (BB.tabela);
+            }
+            catch (Exception ex) { throw new Exception("Erro listar: " + ex.Message); }
         }
     }
 }

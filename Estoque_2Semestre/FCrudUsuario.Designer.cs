@@ -46,6 +46,8 @@
             this.label7 = new System.Windows.Forms.Label();
             this.lblUsuario = new System.Windows.Forms.Label();
             this.chkAdminstrador = new System.Windows.Forms.CheckBox();
+            this.dgvUsuario = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUsuario)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -105,9 +107,9 @@
             // 
             // btnCadastrar
             // 
-            this.btnCadastrar.Location = new System.Drawing.Point(503, 228);
+            this.btnCadastrar.Location = new System.Drawing.Point(199, 403);
             this.btnCadastrar.Name = "btnCadastrar";
-            this.btnCadastrar.Size = new System.Drawing.Size(109, 42);
+            this.btnCadastrar.Size = new System.Drawing.Size(109, 35);
             this.btnCadastrar.TabIndex = 6;
             this.btnCadastrar.Text = "Cadastrar";
             this.btnCadastrar.UseVisualStyleBackColor = true;
@@ -115,7 +117,7 @@
             // 
             // btnAlterar
             // 
-            this.btnAlterar.Location = new System.Drawing.Point(454, 285);
+            this.btnAlterar.Location = new System.Drawing.Point(314, 403);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(108, 35);
             this.btnAlterar.TabIndex = 7;
@@ -125,7 +127,7 @@
             // 
             // btnRemover
             // 
-            this.btnRemover.Location = new System.Drawing.Point(568, 285);
+            this.btnRemover.Location = new System.Drawing.Point(454, 403);
             this.btnRemover.Name = "btnRemover";
             this.btnRemover.Size = new System.Drawing.Size(108, 35);
             this.btnRemover.TabIndex = 8;
@@ -147,7 +149,7 @@
             // 
             this.txtNome.Location = new System.Drawing.Point(40, 154);
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(224, 20);
+            this.txtNome.Size = new System.Drawing.Size(275, 20);
             this.txtNome.TabIndex = 10;
             this.txtNome.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtNome_KeyUp);
             this.txtNome.Leave += new System.EventHandler(this.txtNome_Leave);
@@ -204,18 +206,29 @@
             // chkAdminstrador
             // 
             this.chkAdminstrador.AutoSize = true;
-            this.chkAdminstrador.Location = new System.Drawing.Point(309, 156);
+            this.chkAdminstrador.Location = new System.Drawing.Point(226, 208);
             this.chkAdminstrador.Name = "chkAdminstrador";
             this.chkAdminstrador.Size = new System.Drawing.Size(89, 17);
             this.chkAdminstrador.TabIndex = 17;
             this.chkAdminstrador.Text = "Administrador";
             this.chkAdminstrador.UseVisualStyleBackColor = true;
             // 
+            // dgvUsuario
+            // 
+            this.dgvUsuario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvUsuario.Location = new System.Drawing.Point(342, 124);
+            this.dgvUsuario.Name = "dgvUsuario";
+            this.dgvUsuario.ReadOnly = true;
+            this.dgvUsuario.Size = new System.Drawing.Size(436, 253);
+            this.dgvUsuario.TabIndex = 18;
+            this.dgvUsuario.DoubleClick += new System.EventHandler(this.dgvUsuario_DoubleClick);
+            // 
             // FCrudUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.dgvUsuario);
             this.Controls.Add(this.chkAdminstrador);
             this.Controls.Add(this.lblUsuario);
             this.Controls.Add(this.label7);
@@ -237,6 +250,7 @@
             this.Name = "FCrudUsuario";
             this.Text = "Controle de Usuarios";
             this.Load += new System.EventHandler(this.FCrudUsuario_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUsuario)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -262,5 +276,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label lblUsuario;
         private System.Windows.Forms.CheckBox chkAdminstrador;
+        private System.Windows.Forms.DataGridView dgvUsuario;
     }
 }

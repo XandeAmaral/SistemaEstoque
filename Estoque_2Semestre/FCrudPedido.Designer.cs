@@ -41,20 +41,29 @@
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnRemover = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.lstPedido = new System.Windows.Forms.ListView();
             this.txtNPedido = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtCNPJ = new System.Windows.Forms.TextBox();
             this.txtTelefone = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpPedido = new System.Windows.Forms.DateTimePicker();
             this.cmbFornecedor = new System.Windows.Forms.ComboBox();
+            this.dgvPedido = new System.Windows.Forms.DataGridView();
+            this.txtDescr = new System.Windows.Forms.TextBox();
+            this.txtStatus = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtValor = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtQtde = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPedido)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Sylfaen", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(150, 38);
+            this.label1.Location = new System.Drawing.Point(268, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(270, 46);
             this.label1.TabIndex = 0;
@@ -72,7 +81,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(358, 110);
+            this.label3.Location = new System.Drawing.Point(247, 110);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(80, 13);
             this.label3.TabIndex = 2;
@@ -99,7 +108,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(358, 158);
+            this.label6.Location = new System.Drawing.Point(324, 158);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(34, 13);
             this.label6.TabIndex = 5;
@@ -108,7 +117,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(358, 215);
+            this.label7.Location = new System.Drawing.Point(324, 215);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(49, 13);
             this.label7.TabIndex = 6;
@@ -117,7 +126,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(12, 481);
+            this.label8.Location = new System.Drawing.Point(12, 551);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(43, 13);
             this.label8.TabIndex = 7;
@@ -126,7 +135,7 @@
             // lblUsuario
             // 
             this.lblUsuario.AutoSize = true;
-            this.lblUsuario.Location = new System.Drawing.Point(61, 481);
+            this.lblUsuario.Location = new System.Drawing.Point(61, 551);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(10, 13);
             this.lblUsuario.TabIndex = 8;
@@ -134,7 +143,7 @@
             // 
             // btnCadastrar
             // 
-            this.btnCadastrar.Location = new System.Drawing.Point(247, 439);
+            this.btnCadastrar.Location = new System.Drawing.Point(324, 503);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(90, 34);
             this.btnCadastrar.TabIndex = 9;
@@ -144,44 +153,39 @@
             // 
             // btnAlterar
             // 
-            this.btnAlterar.Location = new System.Drawing.Point(151, 439);
+            this.btnAlterar.Location = new System.Drawing.Point(228, 503);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(90, 34);
             this.btnAlterar.TabIndex = 10;
             this.btnAlterar.Text = "Alterar";
             this.btnAlterar.UseVisualStyleBackColor = true;
+            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
             // 
             // btnRemover
             // 
-            this.btnRemover.Location = new System.Drawing.Point(343, 439);
+            this.btnRemover.Location = new System.Drawing.Point(420, 503);
             this.btnRemover.Name = "btnRemover";
             this.btnRemover.Size = new System.Drawing.Size(90, 34);
             this.btnRemover.TabIndex = 11;
             this.btnRemover.Text = "Remover";
             this.btnRemover.UseVisualStyleBackColor = true;
+            this.btnRemover.Click += new System.EventHandler(this.btnRemover_Click);
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(531, 457);
+            this.btnCancelar.Location = new System.Drawing.Point(665, 530);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(80, 34);
             this.btnCancelar.TabIndex = 12;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
-            // 
-            // lstPedido
-            // 
-            this.lstPedido.HideSelection = false;
-            this.lstPedido.Location = new System.Drawing.Point(33, 289);
-            this.lstPedido.Name = "lstPedido";
-            this.lstPedido.Size = new System.Drawing.Size(533, 132);
-            this.lstPedido.TabIndex = 13;
-            this.lstPedido.UseCompatibleStateImageBehavior = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // txtNPedido
             // 
             this.txtNPedido.Location = new System.Drawing.Point(33, 126);
             this.txtNPedido.Name = "txtNPedido";
+            this.txtNPedido.ReadOnly = true;
             this.txtNPedido.Size = new System.Drawing.Size(155, 20);
             this.txtNPedido.TabIndex = 14;
             this.txtNPedido.TextChanged += new System.EventHandler(this.txtNPedido_TextChanged);
@@ -190,31 +194,37 @@
             // 
             this.txtEmail.Location = new System.Drawing.Point(33, 231);
             this.txtEmail.Name = "txtEmail";
+            this.txtEmail.ReadOnly = true;
             this.txtEmail.Size = new System.Drawing.Size(208, 20);
             this.txtEmail.TabIndex = 16;
             // 
             // txtCNPJ
             // 
-            this.txtCNPJ.Location = new System.Drawing.Point(333, 174);
+            this.txtCNPJ.Location = new System.Drawing.Point(299, 174);
             this.txtCNPJ.Name = "txtCNPJ";
+            this.txtCNPJ.ReadOnly = true;
             this.txtCNPJ.Size = new System.Drawing.Size(155, 20);
             this.txtCNPJ.TabIndex = 17;
             this.txtCNPJ.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtCNPJ_KeyUp);
             // 
             // txtTelefone
             // 
-            this.txtTelefone.Location = new System.Drawing.Point(333, 231);
+            this.txtTelefone.Location = new System.Drawing.Point(299, 231);
             this.txtTelefone.Name = "txtTelefone";
+            this.txtTelefone.ReadOnly = true;
             this.txtTelefone.Size = new System.Drawing.Size(155, 20);
             this.txtTelefone.TabIndex = 18;
             this.txtTelefone.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtTelefone_KeyUp);
             // 
-            // dateTimePicker1
+            // dtpPedido
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(324, 126);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 19;
+            this.dtpPedido.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpPedido.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpPedido.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpPedido.Location = new System.Drawing.Point(237, 126);
+            this.dtpPedido.Name = "dtpPedido";
+            this.dtpPedido.Size = new System.Drawing.Size(111, 22);
+            this.dtpPedido.TabIndex = 19;
             // 
             // cmbFornecedor
             // 
@@ -224,18 +234,102 @@
             this.cmbFornecedor.Size = new System.Drawing.Size(227, 21);
             this.cmbFornecedor.TabIndex = 20;
             // 
+            // dgvPedido
+            // 
+            this.dgvPedido.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPedido.Location = new System.Drawing.Point(15, 323);
+            this.dgvPedido.Name = "dgvPedido";
+            this.dgvPedido.ReadOnly = true;
+            this.dgvPedido.Size = new System.Drawing.Size(717, 155);
+            this.dgvPedido.TabIndex = 21;
+            this.dgvPedido.DoubleClick += new System.EventHandler(this.dgvPedido_DoubleClick);
+            // 
+            // txtDescr
+            // 
+            this.txtDescr.Location = new System.Drawing.Point(33, 283);
+            this.txtDescr.Name = "txtDescr";
+            this.txtDescr.Size = new System.Drawing.Size(461, 20);
+            this.txtDescr.TabIndex = 25;
+            // 
+            // txtStatus
+            // 
+            this.txtStatus.Location = new System.Drawing.Point(394, 126);
+            this.txtStatus.Name = "txtStatus";
+            this.txtStatus.Size = new System.Drawing.Size(155, 20);
+            this.txtStatus.TabIndex = 24;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(46, 267);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(55, 13);
+            this.label9.TabIndex = 23;
+            this.label9.Text = "Descrição";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(417, 110);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(37, 13);
+            this.label10.TabIndex = 22;
+            this.label10.Text = "Status";
+            // 
+            // txtValor
+            // 
+            this.txtValor.Location = new System.Drawing.Point(484, 231);
+            this.txtValor.Name = "txtValor";
+            this.txtValor.Size = new System.Drawing.Size(203, 20);
+            this.txtValor.TabIndex = 27;
+            this.txtValor.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtValor_KeyUp);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(507, 215);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(31, 13);
+            this.label11.TabIndex = 26;
+            this.label11.Text = "Valor";
+            // 
+            // txtQtde
+            // 
+            this.txtQtde.Location = new System.Drawing.Point(484, 174);
+            this.txtQtde.Name = "txtQtde";
+            this.txtQtde.Size = new System.Drawing.Size(155, 20);
+            this.txtQtde.TabIndex = 29;
+            this.txtQtde.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtQtde_KeyUp);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(507, 158);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(62, 13);
+            this.label12.TabIndex = 28;
+            this.label12.Text = "Quantidade";
+            // 
             // FCrudPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(623, 503);
+            this.ClientSize = new System.Drawing.Size(756, 576);
+            this.Controls.Add(this.txtQtde);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.txtValor);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.txtDescr);
+            this.Controls.Add(this.txtStatus);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.dgvPedido);
             this.Controls.Add(this.cmbFornecedor);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dtpPedido);
             this.Controls.Add(this.txtTelefone);
             this.Controls.Add(this.txtCNPJ);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtNPedido);
-            this.Controls.Add(this.lstPedido);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnRemover);
             this.Controls.Add(this.btnAlterar);
@@ -251,6 +345,8 @@
             this.Controls.Add(this.label1);
             this.Name = "FCrudPedido";
             this.Text = "Controle de Pedido";
+            this.Load += new System.EventHandler(this.FCrudPedido_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPedido)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -271,12 +367,20 @@
         private System.Windows.Forms.Button btnAlterar;
         private System.Windows.Forms.Button btnRemover;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.ListView lstPedido;
         private System.Windows.Forms.TextBox txtNPedido;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtCNPJ;
         private System.Windows.Forms.TextBox txtTelefone;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpPedido;
         private System.Windows.Forms.ComboBox cmbFornecedor;
+        private System.Windows.Forms.DataGridView dgvPedido;
+        private System.Windows.Forms.TextBox txtDescr;
+        private System.Windows.Forms.TextBox txtStatus;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox txtValor;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.TextBox txtQtde;
+        private System.Windows.Forms.Label label12;
     }
 }

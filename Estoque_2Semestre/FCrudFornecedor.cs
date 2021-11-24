@@ -27,8 +27,14 @@ namespace Estoque_2Semestre
             UsLogado = usuario;
             mostrar();
         }
-
-
+        private void FCrudFornecedor_Load(object sender, EventArgs e)
+        {
+            this.lblUsuario.Text = UsLogado.nome;
+            this.txtNome.MaxLength = 50;
+            this.txtCnpj.MaxLength = 16;
+            this.txtTelefone.MaxLength = 17;
+            this.txtEmail.MaxLength = 50;
+        }
         private void mostrar() // mostra as pessoas da base no dgv
         {
             Fornecedor Fo;
@@ -114,7 +120,6 @@ namespace Estoque_2Semestre
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
-
         private void btnAlterar_Click(object sender, EventArgs e)
         {
             Fornecedor Fo;
@@ -147,7 +152,6 @@ namespace Estoque_2Semestre
             catch (Exception ex) { MessageBox.Show(ex.Message); }
 
         }
-
         private void btnRemover_Click(object sender, EventArgs e)
         {
             Fornecedor Fo;
@@ -171,19 +175,25 @@ namespace Estoque_2Semestre
             catch (Exception ex) { MessageBox.Show(ex.Message); }
 
         }
-
         private void dgvFornecedor_DoubleClick(object sender, EventArgs e)
         {
-
-            int i = this.dgvFornecedor.SelectedCells[0].RowIndex;
-            
-
-            this.codFornecedor = Convert.ToInt32(this.dgvFornecedor.Rows[i].Cells[0].Value);
-            this.txtNome.Text = this.dgvFornecedor.Rows[i].Cells[1].Value.ToString();
-            this.txtCnpj.Text = this.dgvFornecedor.Rows[i].Cells[2].Value.ToString();
-            this.txtTelefone.Text = this.dgvFornecedor.Rows[i].Cells[3].Value.ToString();
-            this.txtEmail.Text = this.dgvFornecedor.Rows[i].Cells[4].Value.ToString();
-
+            try
+            {
+                int i = this.dgvFornecedor.SelectedCells[0].RowIndex;
+                if ((i != -1) && (i != this.dgvFornecedor.RowCount - 1))
+                {
+                    this.codFornecedor = Convert.ToInt32(this.dgvFornecedor.Rows[i].Cells[0].Value);
+                    this.txtNome.Text = this.dgvFornecedor.Rows[i].Cells[1].Value.ToString();
+                    this.txtCnpj.Text = this.dgvFornecedor.Rows[i].Cells[2].Value.ToString();
+                    this.txtEmail.Text = this.dgvFornecedor.Rows[i].Cells[3].Value.ToString();
+                    this.txtTelefone.Text = this.dgvFornecedor.Rows[i].Cells[4].Value.ToString();
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
+        }
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

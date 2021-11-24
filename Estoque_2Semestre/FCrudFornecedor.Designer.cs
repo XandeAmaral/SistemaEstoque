@@ -41,6 +41,9 @@
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnRemover = new System.Windows.Forms.Button();
             this.dgvFornecedor = new System.Windows.Forms.DataGridView();
+            this.lblUsuario = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.btnCancelar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvFornecedor)).BeginInit();
             this.SuspendLayout();
             // 
@@ -155,15 +158,47 @@
             this.dgvFornecedor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvFornecedor.Location = new System.Drawing.Point(300, 130);
             this.dgvFornecedor.Name = "dgvFornecedor";
+            this.dgvFornecedor.ReadOnly = true;
             this.dgvFornecedor.Size = new System.Drawing.Size(427, 209);
             this.dgvFornecedor.TabIndex = 12;
             this.dgvFornecedor.DoubleClick += new System.EventHandler(this.dgvFornecedor_DoubleClick);
+            // 
+            // lblUsuario
+            // 
+            this.lblUsuario.AutoSize = true;
+            this.lblUsuario.Location = new System.Drawing.Point(55, 419);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(10, 13);
+            this.lblUsuario.TabIndex = 18;
+            this.lblUsuario.Text = ".";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 419);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(43, 13);
+            this.label7.TabIndex = 17;
+            this.label7.Text = "Usuario";
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Location = new System.Drawing.Point(663, 388);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(78, 41);
+            this.btnCancelar.TabIndex = 19;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // FCrudFornecedor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(753, 441);
+            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.lblUsuario);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.dgvFornecedor);
             this.Controls.Add(this.btnRemover);
             this.Controls.Add(this.btnAlterar);
@@ -179,6 +214,7 @@
             this.Controls.Add(this.label1);
             this.Name = "FCrudFornecedor";
             this.Text = "FCrudFornecedor";
+            this.Load += new System.EventHandler(this.FCrudFornecedor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFornecedor)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -200,5 +236,8 @@
         private System.Windows.Forms.Button btnAlterar;
         private System.Windows.Forms.Button btnRemover;
         private System.Windows.Forms.DataGridView dgvFornecedor;
+        private System.Windows.Forms.Label lblUsuario;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button btnCancelar;
     }
 }

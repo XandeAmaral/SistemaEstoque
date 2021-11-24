@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,13 +11,13 @@ namespace Estoque_2Semestre
     {
         public int codigo { get; private set; }
         public int codUsuario { get; private set; }
-        public int codNotaFiscal { get; private set; }
-        public int codItens { get; private set; }
+        public int codItem { get; private set; }
         public int codFornecedor { get; private set; }
         public int quantidade { get; private set; }
         public double valor { get; private set; }
         public string data { get; private set; }
         public string status { get; private set; }
+        public string descr { get; private set; }
 
         public void setcodigo(int i)
         {
@@ -44,28 +45,15 @@ namespace Estoque_2Semestre
             catch (Exception ex) { throw new Exception("Erro setcodigo:" + ex.Message); }
         }
 
-        public void setcodNotaFiscal(int i)
+        public void setcodItem(int i)
         {
-            codNotaFiscal = i;
+            codItem = i;
         }
-        public void setcodNotaFiscal(string i)
+        public void setcodItem(string i)
         {
             try
             {
-                codNotaFiscal = Convert.ToInt32(i);
-            }
-            catch (Exception ex) { throw new Exception("Erro setcodigo:" + ex.Message); }
-        }
-
-        public void setcodItens(int i)
-        {
-            codItens = i;
-        }
-        public void setcodItens(string i)
-        {
-            try
-            {
-                codItens = Convert.ToInt32(i);
+                codItem = Convert.ToInt32(i);
             }
             catch (Exception ex) { throw new Exception("Erro setcodigo:" + ex.Message); }
         }
@@ -110,10 +98,6 @@ namespace Estoque_2Semestre
             catch (Exception ex) { throw new Exception("Erro setcodigo:" + ex.Message); }
         }
 
-        public void setdata(int i)
-        {
-            data = i.ToString();
-        }
         public void setdata(string i)
         {
             try
@@ -123,10 +107,6 @@ namespace Estoque_2Semestre
             catch (Exception ex) { throw new Exception("Erro setcodigo:" + ex.Message); }
         }
 
-        public void setstatus(int i)
-        {
-            status = i.ToString();
-        }
         public void setstatus(string i)
         {
             try
@@ -136,40 +116,151 @@ namespace Estoque_2Semestre
             catch (Exception ex) { throw new Exception("Erro setcodigo:" + ex.Message); }
         }
 
-
-
-        public void cadastrar() // função pra inserir os valores no banco
+        public void setdescr(string i)
         {
-            /*
+            descr = i;
+        }
+
+
+        public void cadastrar()
+        {
             Banco BB;
             try
             {
                 BB = new Banco();
-                BB.comando.CommandText = "insert into cliente(nome,fone) values(@n,@f);";
-                BB.comando.Parameters.Add("@n", NpgsqlTypes.NpgsqlDbType.Varchar).Value = nome;
-                BB.comando.Parameters.Add("@f", NpgsqlTypes.NpgsqlDbType.Varchar).Value = fone;
+                BB.comando.CommandText = "insert into pedido(codusuario, coditem, codfornecedor, qtde, valor, data, status, descr) values(@cu,@ci,@cf,@q,@v,@d,@s,@de); ";
+                BB.comando.Parameters.Add("@cu", NpgsqlTypes.NpgsqlDbType.Integer).Value = this.codUsuario;
+                BB.comando.Parameters.Add("@ci", NpgsqlTypes.NpgsqlDbType.Integer).Value = this.codItem;
+                BB.comando.Parameters.Add("@cf", NpgsqlTypes.NpgsqlDbType.Integer).Value = this.codFornecedor;
+                BB.comando.Parameters.Add("@q", NpgsqlTypes.NpgsqlDbType.Integer).Value = this.quantidade;
+                BB.comando.Parameters.Add("@v", NpgsqlTypes.NpgsqlDbType.Double).Value = this.valor;
+                BB.comando.Parameters.Add("@d", NpgsqlTypes.NpgsqlDbType.Date).Value = this.data;
+                BB.comando.Parameters.Add("@s", NpgsqlTypes.NpgsqlDbType.Varchar).Value = this.status;
+                BB.comando.Parameters.Add("@de", NpgsqlTypes.NpgsqlDbType.Varchar).Value = this.descr;
                 BB.comando.Prepare();
-                BB.comando.ExecuteNonQuery();// executa o sql passado no banco
+                BB.comando.ExecuteNonQuery();
                 Banco.conexao.Close();
             }
-            // dispara uma exceção.
-            catch (Exception ex) { throw new Exception("Erro gravar:" + ex.Message); }
-            */
+            catch (Exception ex) { throw new Exception("Erro cadastrar:" + ex.Message); }
         }
 
-        public void buscar(int cod)
+        public void alterar()
         {
+            Banco BB;
+            try
+            {
+                BB = new Banco();
+                BB.comando.CommandText = "update pedido set codusuario=@cu, coditem=@ci, codfornecedor=@cf, qtde=@q, valor=@v, data=@d, status=@s, descr=@de where codpedido=@cp";
+                BB.comando.Parameters.Add("@cu", NpgsqlTypes.NpgsqlDbType.Integer).Value = this.codUsuario;
+                BB.comando.Parameters.Add("@ci", NpgsqlTypes.NpgsqlDbType.Integer).Value = this.codItem;
+                BB.comando.Parameters.Add("@cf", NpgsqlTypes.NpgsqlDbType.Integer).Value = this.codFornecedor;
+                BB.comando.Parameters.Add("@q", NpgsqlTypes.NpgsqlDbType.Integer).Value = this.quantidade;
+                BB.comando.Parameters.Add("@v", NpgsqlTypes.NpgsqlDbType.Double).Value = this.valor;
+                BB.comando.Parameters.Add("@d", NpgsqlTypes.NpgsqlDbType.Date).Value = this.data;
+                BB.comando.Parameters.Add("@s", NpgsqlTypes.NpgsqlDbType.Varchar).Value = this.status;
+                BB.comando.Parameters.Add("@de", NpgsqlTypes.NpgsqlDbType.Varchar).Value = this.descr;
+                BB.comando.Parameters.Add("@cp", NpgsqlTypes.NpgsqlDbType.Integer).Value = this.codigo;
+                BB.comando.Prepare();
+                BB.comando.ExecuteNonQuery();
+                Banco.conexao.Close();
+            }
+            catch (Exception ex) { throw new Exception("Erro alterar:" + ex.Message); }
 
         }
 
-        public void alterar(int cod)
+        public void remover()
         {
+            Banco BB;
+            try
+            {
+                BB = new Banco();
+                BB.comando.CommandText = "Delete from pedido where codpedido=@cp";
+                BB.comando.Parameters.Add("@cp", NpgsqlTypes.NpgsqlDbType.Integer).Value = this.codigo;
+                BB.comando.Prepare();
+                BB.comando.ExecuteNonQuery();
+                Banco.conexao.Close();
+            }
+            catch (Exception ex) { throw new Exception("Erro remover:" + ex.Message); }
 
         }
 
-        public void remover(int cod)
+        public DataTable listar()
         {
+            Banco BB;
+            try
+            {
+                BB = new Banco();
+                BB.comando.CommandText = "Select codpedido, codusuario, coditem, codfornecedor, qtde, valor, data, status, descr from pedido";
+                BB.comando.Prepare();
+                BB.dreader = BB.comando.ExecuteReader();
+                BB.tabela = new DataTable();
+                BB.tabela.Load(BB.dreader);
+                Banco.conexao.Close();
+                return (BB.tabela);
+            }
+            catch (Exception ex) { throw new Exception("Erro listar: " + ex.Message); }
+        }
 
+        public DataTable buscaCod(int c)
+        {
+            Banco BB;
+            try
+            {
+                BB = new Banco();
+                if (c != 0)
+                {
+                    BB.comando.CommandText = "Select codpedido, codusuario, coditem, codfornecedor, qtde, valor, data," +
+                        " status, descr from pedido where codpedido='@c'";
+                    BB.comando.Parameters.Add("@c", NpgsqlTypes.NpgsqlDbType.Varchar).Value = c;
+                    BB.comando.Prepare();
+                }
+                else
+                {
+                    BB.comando.CommandText = "Select codpedido, codusuario, coditem, codfornecedor, qtde, valor, data," +
+                        " status, descr from pedido";
+                }
+
+                BB.dreader = BB.comando.ExecuteReader();
+                BB.tabela = new DataTable();
+                BB.tabela.Load(BB.dreader);
+                Banco.conexao.Close();
+                return (BB.tabela);
+            }
+            catch (Exception ex) { throw new Exception("Erro buscaCod: " + ex.Message); }
+
+        }
+
+        public int retornarCod()
+        {
+            int i = 0;
+            Banco BB;
+            try
+            {
+                BB = new Banco();
+                BB.comando.CommandText = "select codpedido from pedido where codpedido = (select max(codpedido) from pedido)";
+                BB.comando.Prepare();
+                BB.comando.ExecuteNonQuery();
+                Banco.conexao.Close();
+                i = Convert.ToInt32(BB.tabela.Rows[0][0]);
+                if (i > 0) return (i);
+                else return(0);
+            }
+            catch (Exception ex) { throw new Exception("Erro retornarCod:" + ex.Message); }
         }
     }
 }
+/*
+create table pedido(
+codpedido serial primary key,
+codusuario int not null,
+coditem int,
+codfornecedor int not null,
+qtde int not null,
+valor double not null,
+data date default current_date,
+status varchar(10),
+descr varchar,
+constraint rp01 foreign key(codusuario) references usuario(codusuario) on update cascade,
+constraint rp03 foreign key(codfornecedor) references fornecedor(codfornecedor) on update cascade
+);
+ */
