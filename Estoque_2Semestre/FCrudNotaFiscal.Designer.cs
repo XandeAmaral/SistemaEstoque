@@ -33,13 +33,15 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtOperacao = new System.Windows.Forms.TextBox();
-            this.txtNF = new System.Windows.Forms.TextBox();
+            this.txtNumNF = new System.Windows.Forms.TextBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.lstNF = new System.Windows.Forms.ListView();
             this.btnImportarXML = new System.Windows.Forms.Button();
             this.lblUsuario = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.btnAlterar = new System.Windows.Forms.Button();
+            this.btnRemover = new System.Windows.Forms.Button();
+            this.btnCadastrar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -86,13 +88,13 @@
             this.txtOperacao.Size = new System.Drawing.Size(414, 20);
             this.txtOperacao.TabIndex = 4;
             // 
-            // txtNF
+            // txtNumNF
             // 
-            this.txtNF.Location = new System.Drawing.Point(73, 105);
-            this.txtNF.Name = "txtNF";
-            this.txtNF.Size = new System.Drawing.Size(156, 20);
-            this.txtNF.TabIndex = 5;
-            this.txtNF.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtNF_KeyUp);
+            this.txtNumNF.Location = new System.Drawing.Point(73, 105);
+            this.txtNumNF.Name = "txtNumNF";
+            this.txtNumNF.Size = new System.Drawing.Size(156, 20);
+            this.txtNumNF.TabIndex = 5;
+            this.txtNumNF.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtNF_KeyUp);
             // 
             // dateTimePicker1
             // 
@@ -139,25 +141,45 @@
             // 
             // btnAlterar
             // 
-            this.btnAlterar.Location = new System.Drawing.Point(395, 412);
+            this.btnAlterar.Location = new System.Drawing.Point(252, 401);
             this.btnAlterar.Name = "btnAlterar";
-            this.btnAlterar.Size = new System.Drawing.Size(81, 29);
+            this.btnAlterar.Size = new System.Drawing.Size(95, 40);
             this.btnAlterar.TabIndex = 11;
             this.btnAlterar.Text = "Alterar";
             this.btnAlterar.UseVisualStyleBackColor = true;
+            // 
+            // btnRemover
+            // 
+            this.btnRemover.Location = new System.Drawing.Point(354, 401);
+            this.btnRemover.Name = "btnRemover";
+            this.btnRemover.Size = new System.Drawing.Size(95, 40);
+            this.btnRemover.TabIndex = 12;
+            this.btnRemover.Text = "Remover";
+            this.btnRemover.UseVisualStyleBackColor = true;
+            // 
+            // btnCadastrar
+            // 
+            this.btnCadastrar.Location = new System.Drawing.Point(151, 401);
+            this.btnCadastrar.Name = "btnCadastrar";
+            this.btnCadastrar.Size = new System.Drawing.Size(95, 40);
+            this.btnCadastrar.TabIndex = 13;
+            this.btnCadastrar.Text = "Cadastrar";
+            this.btnCadastrar.UseVisualStyleBackColor = true;
             // 
             // FCrudNotaFiscal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(636, 465);
+            this.Controls.Add(this.btnCadastrar);
+            this.Controls.Add(this.btnRemover);
             this.Controls.Add(this.btnAlterar);
             this.Controls.Add(this.lblUsuario);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnImportarXML);
             this.Controls.Add(this.lstNF);
             this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.txtNF);
+            this.Controls.Add(this.txtNumNF);
             this.Controls.Add(this.txtOperacao);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -165,6 +187,7 @@
             this.Controls.Add(this.label1);
             this.Name = "FCrudNotaFiscal";
             this.Text = "Controle Nota Fiscal";
+            this.Load += new System.EventHandler(this.FCrudNotaFiscal_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -177,12 +200,14 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtOperacao;
-        private System.Windows.Forms.TextBox txtNF;
+        private System.Windows.Forms.TextBox txtNumNF;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.ListView lstNF;
         private System.Windows.Forms.Button btnImportarXML;
         private System.Windows.Forms.Label lblUsuario;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnAlterar;
+        private System.Windows.Forms.Button btnRemover;
+        private System.Windows.Forms.Button btnCadastrar;
     }
 }

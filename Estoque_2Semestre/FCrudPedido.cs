@@ -53,7 +53,7 @@ namespace Estoque_2Semestre
             {
                 Pe = new Pedido();
                 this.lblUsuario.Text = UsLogado.nome;
-                this.codPedidoMax = Pe.retornarCod();
+                this.codPedidoMax = Pe.retornarMaiorCod();
                 this.codPedido = this.codPedidoMax;
                 this.txtNPedido.Text = codPedidoMax.ToString();
                 this.txtStatus.MaxLength = 10;
@@ -166,7 +166,6 @@ namespace Estoque_2Semestre
             catch (Exception ex) { MessageBox.Show(ex.Message); return aux; }
 
         }
-        //-------------- gerar o NPedido automáticamente
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {

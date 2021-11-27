@@ -13,22 +13,44 @@ namespace Estoque_2Semestre
     public partial class FCrudNotaFiscal : Form
     {
         internal Validacoes validacoes;
+        public readonly Usuario UsLogado = new Usuario(); //objeto do Usuario Logado
+        internal int numNf;
+
         public FCrudNotaFiscal()
         {
             InitializeComponent();            
         }
+        public FCrudNotaFiscal(Usuario usuario)
+        {
+            InitializeComponent();
+            UsLogado = usuario;
+        }
 
         private void txtNF_KeyUp(object sender, KeyEventArgs e)
         {
-            if (txtNF.Text.Length > 0) { 
-                if (validacoes.ApenasNumeros(txtNF.Text.ToString()[txtNF.Text.Length - 1]))
+            if (txtNumNF.Text.Length > 0) { 
+                if (validacoes.ApenasNumeros(txtNumNF.Text.ToString()[txtNumNF.Text.Length - 1]))
                 {
                     MessageBox.Show("So pode escrever numero.");
-                    txtNF.Clear();
-                    txtNF.Focus();
+                    txtNumNF.Clear();
+                    txtNumNF.Focus();
                 }
             }
 
+        }
+
+        private void FCrudNotaFiscal_Load(object sender, EventArgs e)
+        {
+            NotaFiscal Nf;
+            try
+            {
+                Nf = new NotaFiscal();
+
+                this.lblUsuario.Text = UsLogado.nome;
+                numNf = Nf.retornarMaiorCod();
+                this.txtNumNF.Text = numNf.ToString();
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
     }
 }

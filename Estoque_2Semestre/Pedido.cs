@@ -230,7 +230,7 @@ namespace Estoque_2Semestre
 
         }
 
-        public int retornarCod()
+        public int retornarMaiorCod()
         {
             int i = 0;
             Banco BB;
@@ -245,7 +245,7 @@ namespace Estoque_2Semestre
                 if (i > 0) return (i);
                 else return(0);
             }
-            catch (Exception ex) { throw new Exception("Erro retornarCod:" + ex.Message); }
+            catch (Exception ex) { throw new Exception("Erro retornarMaiorCod:" + ex.Message); }
         }
     }
 }
