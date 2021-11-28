@@ -239,11 +239,17 @@ namespace Estoque_2Semestre
                 BB = new Banco();
                 BB.comando.CommandText = "select codpedido from pedido where codpedido = (select max(codpedido) from pedido)";
                 BB.comando.Prepare();
-                BB.comando.ExecuteNonQuery();
+                BB.dreader = BB.comando.ExecuteReader();
+                BB.tabela = new DataTable();
+                BB.tabela.Load(BB.dreader);
                 Banco.conexao.Close();
-                i = Convert.ToInt32(BB.tabela.Rows[0][0]);
-                if (i > 0) return (i);
-                else return(0);
+                if ((BB.tabela.Rows.Count > 0) && (BB.tabela != null))
+                {
+                    i = Convert.ToInt32(BB.tabela.Rows[0][0]);
+                    if (i > 0) return (i);
+                    else return (0);
+                }
+                return (0);
             }
             catch (Exception ex) { throw new Exception("Erro retornarMaiorCod:" + ex.Message); }
         }

@@ -44,7 +44,7 @@ namespace Estoque_2Semestre
             telefone = i;
         }
 
-        public void cadastrar() // grava no banco
+        public void cadastrar()
         {
             Banco BB;
             try
@@ -56,15 +56,14 @@ namespace Estoque_2Semestre
                 BB.comando.Parameters.Add("@e", NpgsqlTypes.NpgsqlDbType.Varchar).Value = this.email;
                 BB.comando.Parameters.Add("@t", NpgsqlTypes.NpgsqlDbType.Varchar).Value = this.telefone;
                 BB.comando.Prepare();
-                BB.comando.ExecuteNonQuery();// executa o sql passado no banco
+                BB.comando.ExecuteNonQuery();
                 Banco.conexao.Close();
             }
-            // dispara uma exceção.
             catch (Exception ex) { throw new Exception("Erro cadastrar:" + ex.Message); }
 
         }
 
-        public void alterar() // altera no banco
+        public void alterar()
         {
             Banco BB;
             try
@@ -83,7 +82,7 @@ namespace Estoque_2Semestre
             catch (Exception ex) { throw new Exception("Erro alterar:" + ex.Message); }
         }
 
-        public void remover() // remove no banco
+        public void remover()
         {
             Banco BB;
             try
@@ -99,7 +98,7 @@ namespace Estoque_2Semestre
 
         }
 
-        public DataTable buscaNome(string n) // busca por um nome
+        public DataTable buscaNome(string n)
         {
             Banco BB;
             try
@@ -141,6 +140,23 @@ namespace Estoque_2Semestre
                 return (BB.tabela);
             }
             catch (Exception ex) { throw new Exception("Erro listar: " + ex.Message); }
+        }
+
+        public DataTable listarPorCod()
+        {
+            Banco BB;
+            try
+            {
+                BB = new Banco();
+                BB.comando.CommandText = "Select codfornecedor, nome from fornecedor order by codfornecedor";
+                BB.comando.Prepare();
+                BB.dreader = BB.comando.ExecuteReader();
+                BB.tabela = new DataTable();
+                BB.tabela.Load(BB.dreader);
+                Banco.conexao.Close();
+                return (BB.tabela);
+            }
+            catch (Exception ex) { throw new Exception("Erro listarPorCod: " + ex.Message); }
         }
     }
 

@@ -34,14 +34,15 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtOperacao = new System.Windows.Forms.TextBox();
             this.txtNumNF = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpNF = new System.Windows.Forms.DateTimePicker();
             this.lstNF = new System.Windows.Forms.ListView();
             this.btnImportarXML = new System.Windows.Forms.Button();
             this.lblUsuario = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.btnAlterar = new System.Windows.Forms.Button();
-            this.btnRemover = new System.Windows.Forms.Button();
             this.btnCadastrar = new System.Windows.Forms.Button();
+            this.txtValor = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.btnCancelar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -85,23 +86,25 @@
             // 
             this.txtOperacao.Location = new System.Drawing.Point(151, 154);
             this.txtOperacao.Name = "txtOperacao";
-            this.txtOperacao.Size = new System.Drawing.Size(414, 20);
+            this.txtOperacao.ReadOnly = true;
+            this.txtOperacao.Size = new System.Drawing.Size(208, 20);
             this.txtOperacao.TabIndex = 4;
             // 
             // txtNumNF
             // 
             this.txtNumNF.Location = new System.Drawing.Point(73, 105);
             this.txtNumNF.Name = "txtNumNF";
+            this.txtNumNF.ReadOnly = true;
             this.txtNumNF.Size = new System.Drawing.Size(156, 20);
             this.txtNumNF.TabIndex = 5;
-            this.txtNumNF.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtNF_KeyUp);
             // 
-            // dateTimePicker1
+            // dtpNF
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(365, 106);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 6;
+            this.dtpNF.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpNF.Location = new System.Drawing.Point(365, 106);
+            this.dtpNF.Name = "dtpNF";
+            this.dtpNF.Size = new System.Drawing.Size(111, 20);
+            this.dtpNF.TabIndex = 6;
             // 
             // lstNF
             // 
@@ -114,17 +117,18 @@
             // 
             // btnImportarXML
             // 
-            this.btnImportarXML.Location = new System.Drawing.Point(484, 412);
+            this.btnImportarXML.Location = new System.Drawing.Point(410, 146);
             this.btnImportarXML.Name = "btnImportarXML";
-            this.btnImportarXML.Size = new System.Drawing.Size(105, 29);
+            this.btnImportarXML.Size = new System.Drawing.Size(105, 35);
             this.btnImportarXML.TabIndex = 8;
             this.btnImportarXML.Text = "Importar XML NFe";
             this.btnImportarXML.UseVisualStyleBackColor = true;
+            this.btnImportarXML.Click += new System.EventHandler(this.btnImportarXML_Click);
             // 
             // lblUsuario
             // 
             this.lblUsuario.AutoSize = true;
-            this.lblUsuario.Location = new System.Drawing.Point(61, 443);
+            this.lblUsuario.Location = new System.Drawing.Point(61, 468);
             this.lblUsuario.Name = "lblUsuario";
             this.lblUsuario.Size = new System.Drawing.Size(10, 13);
             this.lblUsuario.TabIndex = 10;
@@ -133,52 +137,62 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(12, 443);
+            this.label5.Location = new System.Drawing.Point(12, 468);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(43, 13);
             this.label5.TabIndex = 9;
             this.label5.Text = "Usuario";
             // 
-            // btnAlterar
-            // 
-            this.btnAlterar.Location = new System.Drawing.Point(252, 401);
-            this.btnAlterar.Name = "btnAlterar";
-            this.btnAlterar.Size = new System.Drawing.Size(95, 40);
-            this.btnAlterar.TabIndex = 11;
-            this.btnAlterar.Text = "Alterar";
-            this.btnAlterar.UseVisualStyleBackColor = true;
-            // 
-            // btnRemover
-            // 
-            this.btnRemover.Location = new System.Drawing.Point(354, 401);
-            this.btnRemover.Name = "btnRemover";
-            this.btnRemover.Size = new System.Drawing.Size(95, 40);
-            this.btnRemover.TabIndex = 12;
-            this.btnRemover.Text = "Remover";
-            this.btnRemover.UseVisualStyleBackColor = true;
-            // 
             // btnCadastrar
             // 
-            this.btnCadastrar.Location = new System.Drawing.Point(151, 401);
+            this.btnCadastrar.Location = new System.Drawing.Point(265, 428);
             this.btnCadastrar.Name = "btnCadastrar";
-            this.btnCadastrar.Size = new System.Drawing.Size(95, 40);
+            this.btnCadastrar.Size = new System.Drawing.Size(94, 35);
             this.btnCadastrar.TabIndex = 13;
             this.btnCadastrar.Text = "Cadastrar";
             this.btnCadastrar.UseVisualStyleBackColor = true;
+            this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
+            // 
+            // txtValor
+            // 
+            this.txtValor.Location = new System.Drawing.Point(94, 392);
+            this.txtValor.Name = "txtValor";
+            this.txtValor.ReadOnly = true;
+            this.txtValor.Size = new System.Drawing.Size(169, 20);
+            this.txtValor.TabIndex = 14;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(30, 399);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(58, 13);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "Valor Total";
+            // 
+            // btnCancelar
+            // 
+            this.btnCancelar.Location = new System.Drawing.Point(550, 452);
+            this.btnCancelar.Name = "btnCancelar";
+            this.btnCancelar.Size = new System.Drawing.Size(77, 26);
+            this.btnCancelar.TabIndex = 16;
+            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.UseVisualStyleBackColor = true;
             // 
             // FCrudNotaFiscal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(636, 465);
+            this.ClientSize = new System.Drawing.Size(639, 490);
+            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.txtValor);
             this.Controls.Add(this.btnCadastrar);
-            this.Controls.Add(this.btnRemover);
-            this.Controls.Add(this.btnAlterar);
             this.Controls.Add(this.lblUsuario);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.btnImportarXML);
             this.Controls.Add(this.lstNF);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dtpNF);
             this.Controls.Add(this.txtNumNF);
             this.Controls.Add(this.txtOperacao);
             this.Controls.Add(this.label4);
@@ -201,13 +215,14 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtOperacao;
         private System.Windows.Forms.TextBox txtNumNF;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpNF;
         private System.Windows.Forms.ListView lstNF;
         private System.Windows.Forms.Button btnImportarXML;
         private System.Windows.Forms.Label lblUsuario;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Button btnAlterar;
-        private System.Windows.Forms.Button btnRemover;
         private System.Windows.Forms.Button btnCadastrar;
+        private System.Windows.Forms.TextBox txtValor;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnCancelar;
     }
 }

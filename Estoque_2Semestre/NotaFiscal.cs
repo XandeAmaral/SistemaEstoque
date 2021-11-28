@@ -14,7 +14,8 @@ namespace Estoque_2Semestre
         public int numnf { get; set; }
         public DateTime dateemissao { get; set; }
         public string natoperacao { get; set; }
-        public string xmlimportado { get; set; }
+        public string[] xmlimportado { get; set; }
+        public Double valor { get; set; }
 
         public void setcodigo(int i)
         {
@@ -53,11 +54,23 @@ namespace Estoque_2Semestre
             natoperacao = i;
         }
 
-        public void setxmlimportado(string i)
+        public void setxmlimportado(string[] i)
         {
             xmlimportado = i;
         }
 
+        public void setvalor(int i)
+        {
+            valor = i;
+        }
+        public void setvalor(double i)
+        {
+            valor = i;
+        }
+        public void setvalor(string i)
+        {
+            valor = Convert.ToDouble(i);
+        }
 
         public void cadastrar()
         {

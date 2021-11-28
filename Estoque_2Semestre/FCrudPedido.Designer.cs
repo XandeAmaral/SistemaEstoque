@@ -54,8 +54,6 @@
             this.label10 = new System.Windows.Forms.Label();
             this.txtValor = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.txtQtde = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedido)).BeginInit();
             this.SuspendLayout();
             // 
@@ -228,11 +226,13 @@
             // 
             // cmbFornecedor
             // 
+            this.cmbFornecedor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbFornecedor.FormattingEnabled = true;
             this.cmbFornecedor.Location = new System.Drawing.Point(33, 174);
             this.cmbFornecedor.Name = "cmbFornecedor";
             this.cmbFornecedor.Size = new System.Drawing.Size(227, 21);
             this.cmbFornecedor.TabIndex = 20;
+            this.cmbFornecedor.SelectedIndexChanged += new System.EventHandler(this.cmbFornecedor_SelectedIndexChanged);
             // 
             // dgvPedido
             // 
@@ -253,7 +253,7 @@
             // 
             // txtStatus
             // 
-            this.txtStatus.Location = new System.Drawing.Point(394, 126);
+            this.txtStatus.Location = new System.Drawing.Point(484, 170);
             this.txtStatus.Name = "txtStatus";
             this.txtStatus.Size = new System.Drawing.Size(155, 20);
             this.txtStatus.TabIndex = 24;
@@ -270,7 +270,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(417, 110);
+            this.label10.Location = new System.Drawing.Point(507, 154);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(37, 13);
             this.label10.TabIndex = 22;
@@ -289,34 +289,15 @@
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(507, 215);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(31, 13);
+            this.label11.Size = new System.Drawing.Size(58, 13);
             this.label11.TabIndex = 26;
-            this.label11.Text = "Valor";
-            // 
-            // txtQtde
-            // 
-            this.txtQtde.Location = new System.Drawing.Point(484, 174);
-            this.txtQtde.Name = "txtQtde";
-            this.txtQtde.Size = new System.Drawing.Size(155, 20);
-            this.txtQtde.TabIndex = 29;
-            this.txtQtde.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtQtde_KeyUp);
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(507, 158);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(62, 13);
-            this.label12.TabIndex = 28;
-            this.label12.Text = "Quantidade";
+            this.label11.Text = "Valor Total";
             // 
             // FCrudPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(756, 576);
-            this.Controls.Add(this.txtQtde);
-            this.Controls.Add(this.label12);
             this.Controls.Add(this.txtValor);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.txtDescr);
@@ -380,7 +361,5 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtValor;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox txtQtde;
-        private System.Windows.Forms.Label label12;
     }
 }

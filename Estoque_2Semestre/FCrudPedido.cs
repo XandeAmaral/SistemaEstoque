@@ -18,6 +18,8 @@ namespace Estoque_2Semestre
         internal int codPedidoMax = 0;
         internal int codFornecedor = 0;
         internal int codItem = 0;
+        internal int qtde = 1;
+        internal List<int> ListCodForncedor;
 
         public FCrudPedido()
         {
@@ -32,6 +34,7 @@ namespace Estoque_2Semestre
             this.dgvPedido.Columns.Add("status", "Status");
             this.dgvPedido.Columns.Add("descr", "Descrição");            
         }
+        // ------------------------------------ COISA ERRADA N TA CHAMADNO COM USUARIO
         public FCrudPedido(Usuario usuario)
         {
             InitializeComponent();
@@ -108,19 +111,7 @@ namespace Estoque_2Semestre
                 }
             }
         }
-        private void txtQtde_KeyUp(object sender, KeyEventArgs e)
-        {
-            if (!(string.IsNullOrEmpty(txtQtde.Text.Trim())))
-            {
-                if (Va.ApenasNumeros(txtQtde.Text.ToString()[txtQtde.Text.Length - 1]))
-                {
-                    MessageBox.Show("So pode escrever numero.");
-                    txtNPedido.Clear();
-                    txtNPedido.Focus();
-                }
-            }
-
-        }
+        
         private void mostrar()
         {
             Pedido Pe;
@@ -141,8 +132,6 @@ namespace Estoque_2Semestre
             this.cmbFornecedor.Items.Clear();
             this.txtStatus.Clear();
             this.txtDescr.Clear();
-            this.txtQtde.Clear();
-
         }
         private int testarElementos()
         {
@@ -159,12 +148,27 @@ namespace Estoque_2Semestre
                 aux += Va.NaoVazio(this.txtStatus.Text);
                 aux += Va.NaoVazio(this.txtDescr.Text);
                 aux += Va.NaoVazio(this.txtValor.Text);
-                aux += Va.NaoVazio(this.txtQtde.Text);
 
                 return aux;
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); return aux; }
 
+        }
+        private void listaFornecedores()
+        {
+            Fornecedor Fo;
+            try
+            {
+                Fo = new Fornecedor();
+                this.cmbFornecedor.DataSource = Fo.listarPorCod();
+                this.cmbFornecedor.ValueMember = "codfornecedor";
+                this.cmbFornecedor.DisplayMember = "nome";
+            }
+            catch(Exception ex) { MessageBox.Show(ex.Message); }
+        }
+        private void cmbFornecedor_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            listaFornecedores();
         }
 
         private void btnCadastrar_Click(object sender, EventArgs e)
@@ -183,7 +187,7 @@ namespace Estoque_2Semestre
                         Pe.setcodUsuario(this.UsLogado.codigo);
                         //Pe.setcodItem(this.codItem);
                         Pe.setcodFornecedor(this.codFornecedor);
-                        Pe.setqtde(this.txtQtde.Text);
+                        Pe.setqtde(this.qtde);
                         Pe.setvalor(this.txtValor.Text);
                         Pe.setdata(this.dtpPedido.Text);
                         Pe.setstatus(this.txtStatus.Text);
@@ -215,7 +219,7 @@ namespace Estoque_2Semestre
                         Pe.setcodUsuario(this.UsLogado.codigo);
                         //Pe.setcodItem(this.codItem);
                         Pe.setcodFornecedor(this.codFornecedor);
-                        Pe.setqtde(this.txtQtde.Text);
+                        Pe.setqtde(this.qtde);
                         Pe.setvalor(this.txtValor.Text);
                         Pe.setdata(this.dtpPedido.Text);
                         Pe.setstatus(this.txtStatus.Text);
@@ -261,11 +265,6 @@ namespace Estoque_2Semestre
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void dgvPedido_DoubleClick(object sender, EventArgs e)
         {
             try
@@ -276,7 +275,7 @@ namespace Estoque_2Semestre
                     this.codPedido = Convert.ToInt32(this.dgvPedido.Rows[i].Cells[1].Value);
                     this.codItem = Convert.ToInt32(this.dgvPedido.Rows[i].Cells[3].Value);
                     this.codFornecedor = Convert.ToInt32(this.dgvPedido.Rows[i].Cells[4].Value);
-                    this.txtQtde.Text = this.dgvPedido.Rows[i].Cells[5].Value.ToString();
+                    //this.txtQtde.Text = this.dgvPedido.Rows[i].Cells[5].Value.ToString();
                     this.txtValor.Text = this.dgvPedido.Rows[i].Cells[6].Value.ToString();
                     this.dtpPedido.Text = this.dgvPedido.Rows[i].Cells[7].Value.ToString();
                     this.txtStatus.Text = this.dgvPedido.Rows[i].Cells[8].Value.ToString();
@@ -289,5 +288,12 @@ namespace Estoque_2Semestre
             catch (Exception ex) { MessageBox.Show(ex.Message); }
 
         }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        
     }
 }
