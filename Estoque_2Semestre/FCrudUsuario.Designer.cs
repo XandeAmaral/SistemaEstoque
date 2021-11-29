@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FCrudUsuario));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -150,7 +151,7 @@
             this.btnRemover.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.btnRemover.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRemover.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.btnRemover.Location = new System.Drawing.Point(323, 419);
+            this.btnRemover.Location = new System.Drawing.Point(323, 417);
             this.btnRemover.Name = "btnRemover";
             this.btnRemover.Size = new System.Drawing.Size(108, 35);
             this.btnRemover.TabIndex = 8;
@@ -251,7 +252,7 @@
             // 
             this.label8.Font = new System.Drawing.Font("Calibri", 48F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.DarkSeaGreen;
-            this.label8.Location = new System.Drawing.Point(583, 395);
+            this.label8.Location = new System.Drawing.Point(583, 418);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(287, 69);
             this.label8.TabIndex = 18;
@@ -262,7 +263,7 @@
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Calibri", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.DarkSeaGreen;
-            this.label9.Location = new System.Drawing.Point(801, 467);
+            this.label9.Location = new System.Drawing.Point(801, 490);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(54, 15);
             this.label9.TabIndex = 19;
@@ -270,6 +271,7 @@
             // 
             // label10
             // 
+            this.label10.Image = ((System.Drawing.Image)(resources.GetObject("label10.Image")));
             this.label10.Location = new System.Drawing.Point(60, 23);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(133, 115);
@@ -289,7 +291,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(867, 489);
+            this.ClientSize = new System.Drawing.Size(877, 514);
             this.Controls.Add(this.dgvUsuario);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
