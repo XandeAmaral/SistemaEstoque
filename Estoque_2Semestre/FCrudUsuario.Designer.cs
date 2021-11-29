@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FCrudUsuario));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -271,7 +270,6 @@
             // 
             // label10
             // 
-            this.label10.Image = ((System.Drawing.Image)(resources.GetObject("label10.Image")));
             this.label10.Location = new System.Drawing.Point(60, 23);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(133, 115);
@@ -285,6 +283,7 @@
             this.dgvUsuario.Name = "dgvUsuario";
             this.dgvUsuario.Size = new System.Drawing.Size(493, 254);
             this.dgvUsuario.TabIndex = 21;
+            this.dgvUsuario.DoubleClick += new System.EventHandler(this.dgvUsuario_DoubleClick_1);
             // 
             // FCrudUsuario
             // 

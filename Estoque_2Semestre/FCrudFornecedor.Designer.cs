@@ -218,6 +218,7 @@
             this.btnCancelar.TabIndex = 16;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // lblUsuario
             // 
@@ -266,6 +267,7 @@
             this.Name = "FCrudFornecedor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FCrudFornecedor";
+            this.Load += new System.EventHandler(this.FCrudFornecedor_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvFornecedor)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -28,18 +28,17 @@ namespace Estoque_2Semestre
             lblUsuario.Text = UsLogado.nome;
         }
 
+        //@ Consultas
         private void pedidoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FConsultaPedido f = new FConsultaPedido();
             f.ShowDialog();
         }
-
         private void notaFiscalToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FConsultaNotaFiscal f = new FConsultaNotaFiscal();
             f.ShowDialog();
         }
-
         private void usuarioToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (this.UsLogado.administrador)
@@ -49,19 +48,19 @@ namespace Estoque_2Semestre
             }
             else MessageBox.Show("Permitido so para administradores.");
         }
+        //
 
+        //@ Cruds
         private void pedidoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            FCrudPedido f = new FCrudPedido();
+            FCrudPedido f = new FCrudPedido(UsLogado);
             f.ShowDialog();
         }
-
         private void notaFiscalToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            FCrudNotaFiscal f = new FCrudNotaFiscal();
+            FCrudNotaFiscal f = new FCrudNotaFiscal(UsLogado);
             f.ShowDialog();
         }
-
         private void usuarioToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             if (this.UsLogado.administrador)
@@ -71,7 +70,6 @@ namespace Estoque_2Semestre
             }
             else MessageBox.Show("Permitido so para administradores.");
         }
-
         private void fornecedorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (this.UsLogado.administrador)
@@ -81,5 +79,6 @@ namespace Estoque_2Semestre
             }
             else MessageBox.Show("Permitido so para administradores.");
         }
+        //
     }
 }

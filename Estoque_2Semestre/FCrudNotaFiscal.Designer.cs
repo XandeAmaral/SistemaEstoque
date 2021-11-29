@@ -137,6 +137,7 @@
             this.btnImportarXML.TabIndex = 8;
             this.btnImportarXML.Text = "Importar XML NFe";
             this.btnImportarXML.UseVisualStyleBackColor = false;
+            this.btnImportarXML.Click += new System.EventHandler(this.btnImportarXML_Click);
             // 
             // lblUsuario
             // 
@@ -169,6 +170,7 @@
             this.btnCadastrar.TabIndex = 11;
             this.btnCadastrar.Text = "Cadastrar";
             this.btnCadastrar.UseVisualStyleBackColor = false;
+            this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
             // 
             // label6
             // 
@@ -249,6 +251,7 @@
             this.Name = "FCrudNotaFiscal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Controle Nota Fiscal";
+            this.Load += new System.EventHandler(this.FCrudNotaFiscal_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

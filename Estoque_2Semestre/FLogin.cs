@@ -17,6 +17,23 @@ namespace Estoque_2Semestre
             InitializeComponent();
         }
 
+        private int TestarElementos()
+        {// testa para ver se todos os elementos tem valor
+            int aux = 0;
+            Validacoes Va;
+
+            try
+            {
+                Va = new Validacoes();
+
+                aux += Va.NaoVazio(this.txtNome.Text);
+                aux += Va.NaoVazio(this.txtSenha.Text);
+
+                return aux;
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message); return aux; }
+        }
+
         private void btnAcessar_Click(object sender, EventArgs e)
         {
             Usuario Us;
@@ -49,23 +66,6 @@ namespace Estoque_2Semestre
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
-        private int TestarElementos()
-        {// testa para ver se todos os elementos tem valor
-            int aux = 0;
-            Validacoes Va;
-
-            try
-            {
-                Va = new Validacoes();
-
-                aux += Va.NaoVazio(this.txtNome.Text);
-                aux += Va.NaoVazio(this.txtSenha.Text);
-
-                return aux;
-            }
-            catch (Exception ex) { MessageBox.Show(ex.Message); return aux; }
-        }
-
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();

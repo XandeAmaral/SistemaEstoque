@@ -24,14 +24,6 @@ namespace Estoque_2Semestre
         {
             InitializeComponent();
             mostrar();
-            this.dgvPedido.Columns.Add("codusuario", "Usuario");
-            //this.dgvPedido.Columns.Add("coditem", "Codigo Item");
-            this.dgvPedido.Columns.Add("codfornecedor", "Fornecedor");
-            this.dgvPedido.Columns.Add("qtde", "Quantidade");
-            this.dgvPedido.Columns.Add("valor", "Valor");
-            this.dgvPedido.Columns.Add("data", "Data");
-            this.dgvPedido.Columns.Add("status", "Status");
-            this.dgvPedido.Columns.Add("descr", "Descrição");            
         }
         // ------------------------------------ COISA ERRADA N TA CHAMADNO COM USUARIO
         public FCrudPedido(Usuario usuario)
@@ -39,14 +31,6 @@ namespace Estoque_2Semestre
             InitializeComponent();
             UsLogado = usuario;
             mostrar();
-            this.dgvPedido.Columns.Add("codusuario", "Usuario");
-            //this.dgvPedido.Columns.Add("coditem", "Codigo Item");
-            this.dgvPedido.Columns.Add("codfornecedor", "Fornecedor");
-            this.dgvPedido.Columns.Add("qtde", "Quantidade");
-            this.dgvPedido.Columns.Add("valor", "Valor");
-            this.dgvPedido.Columns.Add("data", "Data");
-            this.dgvPedido.Columns.Add("status", "Status");
-            this.dgvPedido.Columns.Add("descr", "Descrição");
         }
         private void FCrudPedido_Load(object sender, EventArgs e)
         {
@@ -270,7 +254,7 @@ namespace Estoque_2Semestre
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
-        private void dgvPedido_DoubleClick(object sender, EventArgs e)
+        private void dgvPedido_DoubleClick_1(object sender, EventArgs e)
         {
             try
             {
@@ -294,11 +278,9 @@ namespace Estoque_2Semestre
 
         }
 
-        private void btnCancelar_Click(object sender, EventArgs e)
+        private void btnCancelar_Click_1(object sender, EventArgs e)
         {
             this.Close();
         }
-
-        
     }
 }

@@ -30,11 +30,6 @@ namespace Estoque_2Semestre
             InitializeComponent();
             UsLogado = usuario; // recebe o UsLogado
             mostrar();
-            this.dgvUsuario.Columns.Add("codusuario", "Codigo Usuario");
-            this.dgvUsuario.Columns.Add("nome", "Nome");
-            this.dgvUsuario.Columns.Add("administrador", "Administrador");
-            this.dgvUsuario.Columns.Add("login", "Login");
-            this.dgvUsuario.Columns.Add("email", "Email");
         }
         // Select codusuario, nome, administrador, login, email from usuario
         private void FCrudUsuario_Load(object sender, EventArgs e) // coloca o nome do UsLogado
@@ -214,7 +209,7 @@ namespace Estoque_2Semestre
         {
             this.Close();
         }
-        private void dgvUsuario_DoubleClick(object sender, EventArgs e)
+        private void dgvUsuario_DoubleClick_1(object sender, EventArgs e)
         {
             try
             {
@@ -229,6 +224,7 @@ namespace Estoque_2Semestre
                 }
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
+
         }
     }
 }

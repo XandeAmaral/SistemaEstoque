@@ -180,6 +180,7 @@
             this.btnAlterar.TabIndex = 10;
             this.btnAlterar.Text = "Alterar";
             this.btnAlterar.UseVisualStyleBackColor = false;
+            this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
             // 
             // btnRemover
             // 
@@ -192,6 +193,7 @@
             this.btnRemover.TabIndex = 11;
             this.btnRemover.Text = "Remover";
             this.btnRemover.UseVisualStyleBackColor = false;
+            this.btnRemover.Click += new System.EventHandler(this.btnRemover_Click);
             // 
             // btnCancelar
             // 
@@ -204,6 +206,7 @@
             this.btnCancelar.TabIndex = 12;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click_1);
             // 
             // txtNPedido
             // 
@@ -267,6 +270,7 @@
             this.cmbFornecedor.Name = "cmbFornecedor";
             this.cmbFornecedor.Size = new System.Drawing.Size(227, 23);
             this.cmbFornecedor.TabIndex = 20;
+            this.cmbFornecedor.SelectedIndexChanged += new System.EventHandler(this.cmbFornecedor_SelectedIndexChanged);
             // 
             // txtValor
             // 
@@ -275,6 +279,7 @@
             this.txtValor.Name = "txtValor";
             this.txtValor.Size = new System.Drawing.Size(220, 23);
             this.txtValor.TabIndex = 24;
+            this.txtValor.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtValor_KeyUp);
             // 
             // txtStatus
             // 
@@ -354,6 +359,7 @@
             this.dgvPedido.Name = "dgvPedido";
             this.dgvPedido.Size = new System.Drawing.Size(746, 145);
             this.dgvPedido.TabIndex = 29;
+            this.dgvPedido.DoubleClick += new System.EventHandler(this.dgvPedido_DoubleClick_1);
             // 
             // FCrudPedido
             // 
@@ -392,6 +398,7 @@
             this.Name = "FCrudPedido";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Controle de Pedido";
+            this.Load += new System.EventHandler(this.FCrudPedido_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedido)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
