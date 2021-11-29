@@ -41,12 +41,11 @@
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnRemover = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
-            this.lstPedido = new System.Windows.Forms.ListView();
             this.txtNPedido = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.txtCNPJ = new System.Windows.Forms.TextBox();
             this.txtTelefone = new System.Windows.Forms.TextBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.dtpPedido = new System.Windows.Forms.DateTimePicker();
             this.cmbFornecedor = new System.Windows.Forms.ComboBox();
             this.txtValor = new System.Windows.Forms.TextBox();
             this.txtStatus = new System.Windows.Forms.TextBox();
@@ -56,6 +55,8 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
+            this.dgvPedido = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPedido)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -160,7 +161,7 @@
             this.btnCadastrar.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.btnCadastrar.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCadastrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.btnCadastrar.Location = new System.Drawing.Point(342, 494);
+            this.btnCadastrar.Location = new System.Drawing.Point(30, 492);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(90, 34);
             this.btnCadastrar.TabIndex = 9;
@@ -173,7 +174,7 @@
             this.btnAlterar.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.btnAlterar.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAlterar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.btnAlterar.Location = new System.Drawing.Point(246, 494);
+            this.btnAlterar.Location = new System.Drawing.Point(137, 492);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(90, 34);
             this.btnAlterar.TabIndex = 10;
@@ -185,7 +186,7 @@
             this.btnRemover.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.btnRemover.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRemover.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.btnRemover.Location = new System.Drawing.Point(438, 494);
+            this.btnRemover.Location = new System.Drawing.Point(254, 492);
             this.btnRemover.Name = "btnRemover";
             this.btnRemover.Size = new System.Drawing.Size(90, 34);
             this.btnRemover.TabIndex = 11;
@@ -197,22 +198,12 @@
             this.btnCancelar.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.btnCancelar.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.btnCancelar.Location = new System.Drawing.Point(534, 494);
+            this.btnCancelar.Location = new System.Drawing.Point(493, 492);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(80, 34);
             this.btnCancelar.TabIndex = 12;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
-            // 
-            // lstPedido
-            // 
-            this.lstPedido.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lstPedido.HideSelection = false;
-            this.lstPedido.Location = new System.Drawing.Point(33, 328);
-            this.lstPedido.Name = "lstPedido";
-            this.lstPedido.Size = new System.Drawing.Size(773, 160);
-            this.lstPedido.TabIndex = 13;
-            this.lstPedido.UseCompatibleStateImageBehavior = false;
             // 
             // txtNPedido
             // 
@@ -257,14 +248,14 @@
             this.txtTelefone.TabIndex = 18;
             this.txtTelefone.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtTelefone_KeyUp);
             // 
-            // dateTimePicker1
+            // dtpPedido
             // 
-            this.dateTimePicker1.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker1.Location = new System.Drawing.Point(333, 126);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(125, 23);
-            this.dateTimePicker1.TabIndex = 19;
+            this.dtpPedido.Font = new System.Drawing.Font("Calibri", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtpPedido.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtpPedido.Location = new System.Drawing.Point(333, 126);
+            this.dtpPedido.Name = "dtpPedido";
+            this.dtpPedido.Size = new System.Drawing.Size(125, 23);
+            this.dtpPedido.TabIndex = 19;
             // 
             // cmbFornecedor
             // 
@@ -355,12 +346,22 @@
             this.label13.TabIndex = 27;
             this.label13.Text = "IntelSinal";
             // 
+            // dgvPedido
+            // 
+            this.dgvPedido.BackgroundColor = System.Drawing.Color.White;
+            this.dgvPedido.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPedido.Location = new System.Drawing.Point(33, 328);
+            this.dgvPedido.Name = "dgvPedido";
+            this.dgvPedido.Size = new System.Drawing.Size(746, 145);
+            this.dgvPedido.TabIndex = 29;
+            // 
             // FCrudPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(833, 611);
+            this.Controls.Add(this.dgvPedido);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.label13);
@@ -371,12 +372,11 @@
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.cmbFornecedor);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.dtpPedido);
             this.Controls.Add(this.txtTelefone);
             this.Controls.Add(this.txtCNPJ);
             this.Controls.Add(this.txtEmail);
             this.Controls.Add(this.txtNPedido);
-            this.Controls.Add(this.lstPedido);
             this.Controls.Add(this.btnRemover);
             this.Controls.Add(this.btnAlterar);
             this.Controls.Add(this.btnCadastrar);
@@ -392,6 +392,7 @@
             this.Name = "FCrudPedido";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Controle de Pedido";
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPedido)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -412,12 +413,11 @@
         private System.Windows.Forms.Button btnAlterar;
         private System.Windows.Forms.Button btnRemover;
         private System.Windows.Forms.Button btnCancelar;
-        private System.Windows.Forms.ListView lstPedido;
         private System.Windows.Forms.TextBox txtNPedido;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.TextBox txtCNPJ;
         private System.Windows.Forms.TextBox txtTelefone;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker dtpPedido;
         private System.Windows.Forms.ComboBox cmbFornecedor;
         private System.Windows.Forms.TextBox txtValor;
         private System.Windows.Forms.TextBox txtStatus;
@@ -427,5 +427,6 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.DataGridView dgvPedido;
     }
 }

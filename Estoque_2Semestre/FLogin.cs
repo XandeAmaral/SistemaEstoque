@@ -65,5 +65,10 @@ namespace Estoque_2Semestre
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); return aux; }
         }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
