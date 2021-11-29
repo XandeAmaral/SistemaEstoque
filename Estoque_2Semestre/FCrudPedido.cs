@@ -19,7 +19,6 @@ namespace Estoque_2Semestre
         internal int codFornecedor = 0;
         internal int codItem = 0;
         internal int qtde = 1;
-        internal List<int> ListCodForncedor;
 
         public FCrudPedido()
         {
@@ -60,6 +59,7 @@ namespace Estoque_2Semestre
                 this.codPedido = this.codPedidoMax;
                 this.txtNPedido.Text = codPedidoMax.ToString();
                 this.txtStatus.MaxLength = 10;
+                listaFornecedores();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
@@ -163,12 +163,17 @@ namespace Estoque_2Semestre
                 this.cmbFornecedor.DataSource = Fo.listarPorCod();
                 this.cmbFornecedor.ValueMember = "codfornecedor";
                 this.cmbFornecedor.DisplayMember = "nome";
+
+                if (this.cmbFornecedor.Items.Count <= 0)
+                {
+                    MessageBox.Show("Nenhum fornecedor encontrado. \n Cadastre um fornecedor antes de continuar.");
+                }
             }
             catch(Exception ex) { MessageBox.Show(ex.Message); }
         }
         private void cmbFornecedor_SelectedIndexChanged(object sender, EventArgs e)
         {
-            listaFornecedores();
+            this.codFornecedor = Convert.ToInt32(this.cmbFornecedor.SelectedValue.ToString());
         }
 
         private void btnCadastrar_Click(object sender, EventArgs e)
