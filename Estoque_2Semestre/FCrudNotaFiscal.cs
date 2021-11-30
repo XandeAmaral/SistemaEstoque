@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace Estoque_2Semestre
         internal Validacoes Va;
         public readonly Usuario UsLogado = new Usuario(); //objeto do Usuario Logado
         internal int numNf;
-        internal string[] xml;
+        internal string xml;
         internal int codPedido;
 
         public FCrudNotaFiscal()
@@ -27,7 +28,8 @@ namespace Estoque_2Semestre
         {
             InitializeComponent();
             UsLogado = usuario;
-        }        
+        }
+        
         private void FCrudNotaFiscal_Load(object sender, EventArgs e)
         {
             NotaFiscal Nf;
@@ -65,9 +67,19 @@ namespace Estoque_2Semestre
             this.txtValor.Clear();
             this.lstNF.Clear();
         }
+        public string converterXML(XmlDocument xml)
+        {
+
+            StringWriter sw = new StringWriter();
+            XmlTextWriter tx = new XmlTextWriter(sw);
+            xml.WriteTo(tx);
+
+            string str = sw.ToString();
+            return str;
+        }
         private void lerXmlNfe()
         {
-            var arquivo = @"D:\nfe.xml";
+            var arquivo = @"C:\nfe.xml";
             var item = "";
             var cProd = "";
             var xProd = "";
@@ -77,6 +89,7 @@ namespace Estoque_2Semestre
 
             using (XmlReader meuXml = XmlReader.Create(arquivo))
             {
+                this.xml = arquivo;
                 var fimItens = false;
 
                 while (meuXml.Read())
@@ -134,6 +147,7 @@ namespace Estoque_2Semestre
                 }
             }
         }     
+
         private void btnImportarXML_Click(object sender, EventArgs e)
         {
             lerXmlNfe();
@@ -149,7 +163,7 @@ namespace Estoque_2Semestre
                 if(testarElementos() == 0)
                 {
                     //Nf.setcodpedido(this.codPedido);
-                    Nf.setdataemissao(this.dtpNF.Text);
+                    Nf.setdataemissao(this.dtpNF.Value);
                     Nf.setnatoperacao(this.txtOperacao.Text);
                     Nf.setnumnf(this.txtNumNF.Text);
                     Nf.setxmlimportado(this.xml);
@@ -164,6 +178,10 @@ namespace Estoque_2Semestre
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
 
+        }
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

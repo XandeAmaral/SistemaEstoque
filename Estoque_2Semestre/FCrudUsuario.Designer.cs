@@ -137,7 +137,7 @@
             this.btnAlterar.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.btnAlterar.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAlterar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.btnAlterar.Location = new System.Drawing.Point(209, 417);
+            this.btnAlterar.Location = new System.Drawing.Point(209, 418);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(108, 36);
             this.btnAlterar.TabIndex = 7;
@@ -150,7 +150,7 @@
             this.btnRemover.BackColor = System.Drawing.Color.DarkSeaGreen;
             this.btnRemover.Font = new System.Drawing.Font("Calibri", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRemover.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.btnRemover.Location = new System.Drawing.Point(323, 417);
+            this.btnRemover.Location = new System.Drawing.Point(323, 419);
             this.btnRemover.Name = "btnRemover";
             this.btnRemover.Size = new System.Drawing.Size(108, 35);
             this.btnRemover.TabIndex = 8;

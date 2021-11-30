@@ -41,6 +41,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -147,7 +148,6 @@
             // 
             // label8
             // 
-            this.label8.Image = ((System.Drawing.Image)(resources.GetObject("label8.Image")));
             this.label8.Location = new System.Drawing.Point(486, 40);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(89, 98);
@@ -162,6 +162,14 @@
             this.dataGridView1.Size = new System.Drawing.Size(628, 224);
             this.dataGridView1.TabIndex = 17;
             // 
+            // label9
+            // 
+            this.label9.Image = ((System.Drawing.Image)(resources.GetObject("label9.Image")));
+            this.label9.Location = new System.Drawing.Point(486, 40);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(89, 98);
+            this.label9.TabIndex = 18;
+            // 
             // FConsultaNotaFiscal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -169,6 +177,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.ClientSize = new System.Drawing.Size(652, 518);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -206,5 +215,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label label9;
     }
 }

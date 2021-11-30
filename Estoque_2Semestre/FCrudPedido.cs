@@ -25,13 +25,14 @@ namespace Estoque_2Semestre
             InitializeComponent();
             mostrar();
         }
-        // ------------------------------------ COISA ERRADA N TA CHAMADNO COM USUARIO
+
         public FCrudPedido(Usuario usuario)
         {
             InitializeComponent();
             UsLogado = usuario;
             mostrar();
         }
+
         private void FCrudPedido_Load(object sender, EventArgs e)
         {
             Pedido Pe;
@@ -49,7 +50,7 @@ namespace Estoque_2Semestre
         }
         private void txtNPedido_TextChanged(object sender, EventArgs e)
         {
-            if (!(string.IsNullOrEmpty(txtCNPJ.Text.Trim())))
+            if (!(string.IsNullOrEmpty(txtNPedido.Text.Trim())))
             {
                 if (Va.ApenasNumeros(txtNPedido.Text.ToString()[txtNPedido.Text.Length - 1]))
                 {
@@ -105,8 +106,30 @@ namespace Estoque_2Semestre
                 this.dgvPedido.DataSource = Pe.listar();
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }
-
         }
+        private void completarFornecedor(int cod)
+        {
+            Fornecedor Fo;
+            DataTable tb;
+            try
+            {
+                Fo = new Fornecedor();
+                tb = new DataTable();
+
+                tb = Fo.buscaCod(this.codFornecedor);
+                if (tb != null)
+                {
+                    this.txtCNPJ.Text = tb.Rows[0][0].ToString();
+                    this.txtEmail.Text = tb.Rows[0][1].ToString();
+                    this.txtTelefone.Text = tb.Rows[0][2].ToString();
+
+                    //cnpj, email, telefone from fornecedor
+                }
+                else MessageBox.Show("Falha ao buscar os dados do Fornecedor. \n Contate o suporte.");
+            }
+            catch (Exception Ex) { MessageBox.Show(Ex.Message); }
+        }
+
         private void limpar()
         {
             this.txtNPedido.Clear();
@@ -157,7 +180,21 @@ namespace Estoque_2Semestre
         }
         private void cmbFornecedor_SelectedIndexChanged(object sender, EventArgs e)
         {
-            this.codFornecedor = Convert.ToInt32(this.cmbFornecedor.SelectedValue.ToString());
+            string codFor = "0";
+
+            if (this.cmbFornecedor.SelectedValue.ToString() != null)
+            {
+                codFor = this.cmbFornecedor.SelectedValue.ToString();
+                foreach (char letra in codFor)
+                {
+                    if (letra >= '0' && letra <= '9')
+                    { // se estiver dentro de 0 - 9
+                        this.codFornecedor = Convert.ToInt32(codFor);
+                        completarFornecedor(this.codFornecedor);
+                    }
+                }
+            }
+            else MessageBox.Show("Problema com o codFornecedor. \n Interrompa o processo e nos avise");            
         }
 
         private void btnCadastrar_Click(object sender, EventArgs e)
@@ -170,7 +207,7 @@ namespace Estoque_2Semestre
 
                 if (this.testarElementos() == 0)
                 {
-                    if (this.codPedido != this.codPedidoMax)
+                    if ((this.codPedido != this.codPedidoMax) || (this.codPedidoMax == 0) && (this.codPedido == 0))
                     {
                         //codpedido
                         Pe.setcodUsuario(this.UsLogado.codigo);
@@ -178,10 +215,11 @@ namespace Estoque_2Semestre
                         Pe.setcodFornecedor(this.codFornecedor);
                         Pe.setqtde(this.qtde);
                         Pe.setvalor(this.txtValor.Text);
-                        Pe.setdata(this.dtpPedido.Text);
+                        Pe.setdata(this.dtpPedido.Value) ;
                         Pe.setstatus(this.txtStatus.Text);
                         Pe.setdescr(this.txtDescr.Text);
                         // codpedido, codusuario, coditem, codfornecedor, qtde, valor, data, status, descr
+
                         Pe.cadastrar();
 
                         this.limpar();
@@ -210,7 +248,7 @@ namespace Estoque_2Semestre
                         Pe.setcodFornecedor(this.codFornecedor);
                         Pe.setqtde(this.qtde);
                         Pe.setvalor(this.txtValor.Text);
-                        Pe.setdata(this.dtpPedido.Text);
+                        Pe.setdata(this.dtpPedido.Value);
                         Pe.setstatus(this.txtStatus.Text);
                         Pe.setdescr(this.txtDescr.Text);
 
@@ -247,7 +285,7 @@ namespace Estoque_2Semestre
 
                     MessageBox.Show("Removido com sucesso");
                     mostrar();
-                    this.codPedido = 0;
+                    this.codPedido = -1;
                 }
                 else MessageBox.Show("Antes e preciso selecionar um pedido");
             }
@@ -261,17 +299,18 @@ namespace Estoque_2Semestre
                 int i = this.dgvPedido.SelectedCells[0].RowIndex;
                 if ((i != -1) && (i != this.dgvPedido.RowCount - 1))
                 {
-                    this.codPedido = Convert.ToInt32(this.dgvPedido.Rows[i].Cells[1].Value);
-                    this.codItem = Convert.ToInt32(this.dgvPedido.Rows[i].Cells[3].Value);
-                    this.codFornecedor = Convert.ToInt32(this.dgvPedido.Rows[i].Cells[4].Value);
+                    this.codPedido = Convert.ToInt32(this.dgvPedido.Rows[i].Cells[0].Value);
+                    //this.codItem = Convert.ToInt32(this.dgvPedido.Rows[i].Cells[3].Value);
+                    this.codFornecedor = Convert.ToInt32(this.dgvPedido.Rows[i].Cells[1].Value);
                     //this.txtQtde.Text = this.dgvPedido.Rows[i].Cells[5].Value.ToString();
-                    this.txtValor.Text = this.dgvPedido.Rows[i].Cells[6].Value.ToString();
-                    this.dtpPedido.Text = this.dgvPedido.Rows[i].Cells[7].Value.ToString();
-                    this.txtStatus.Text = this.dgvPedido.Rows[i].Cells[8].Value.ToString();
-                    this.txtDescr.Text = this.dgvPedido.Rows[i].Cells[9].Value.ToString();
+                    this.txtValor.Text = this.dgvPedido.Rows[i].Cells[3].Value.ToString();
+                    this.dtpPedido.Value = Convert.ToDateTime(this.dgvPedido.Rows[i].Cells[4].Value.ToString());
+                    this.txtStatus.Text = this.dgvPedido.Rows[i].Cells[5].Value.ToString();
+                    this.txtDescr.Text = this.dgvPedido.Rows[i].Cells[6].Value.ToString();
 
 
                     // codpedido, codusuario, coditem, codfornecedor, qtde, valor, data, status, descr
+                    // codpedido, codfornecedor, qtde, valor, data, status, descr
                 }
             }
             catch (Exception ex) { MessageBox.Show(ex.Message); }

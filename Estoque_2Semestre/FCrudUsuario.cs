@@ -67,10 +67,13 @@ namespace Estoque_2Semestre
         }
         private void txtNome_Leave(object sender, EventArgs e) // ja cria a frase do login
         {
+            if (!(String.IsNullOrEmpty(this.txtNome.Text)))
+            { 
             string frase = this.txtNome.Text.Trim().ToLower();
             string[] palavras = frase.Split(' ');
             string login = palavras[0][0] + palavras[palavras.Length - 1];
             this.txtLogin.Text = login;
+            }
         }
         private void limpar()
         {// limpa os elementos da tela

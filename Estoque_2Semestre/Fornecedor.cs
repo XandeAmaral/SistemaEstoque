@@ -121,7 +121,33 @@ namespace Estoque_2Semestre
                 Banco.conexao.Close();
                 return (BB.tabela);
             }
-            catch (Exception ex) { throw new Exception("Erro Busca: " + ex.Message); }
+            catch (Exception ex) { throw new Exception("Erro buscaNome: " + ex.Message); }
+
+        }
+        public DataTable buscaCod(int n)
+        {
+            Banco BB;
+            try
+            {
+                BB = new Banco();
+                if (n > 0)
+                {
+                    BB.comando.CommandText = "Select cnpj, email, telefone from fornecedor where codfornecedor=@n";
+                    BB.comando.Parameters.Add("@n", NpgsqlTypes.NpgsqlDbType.Integer).Value = n ;
+                    BB.comando.Prepare();
+                }
+                else
+                {
+                    BB.comando.CommandText = "Erro buscaCod Fornecedor";
+                }
+
+                BB.dreader = BB.comando.ExecuteReader();
+                BB.tabela = new DataTable();
+                BB.tabela.Load(BB.dreader);
+                Banco.conexao.Close();
+                return (BB.tabela);
+            }
+            catch (Exception ex) { throw new Exception("Erro buscaCod: " + ex.Message); }
 
         }
 
@@ -159,7 +185,6 @@ namespace Estoque_2Semestre
             catch (Exception ex) { throw new Exception("Erro listarPorCod: " + ex.Message); }
         }
     }
-
 }
 /*
 

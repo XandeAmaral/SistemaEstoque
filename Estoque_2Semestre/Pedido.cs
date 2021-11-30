@@ -15,7 +15,7 @@ namespace Estoque_2Semestre
         public int codFornecedor { get; private set; }
         public int quantidade { get; private set; }
         public double valor { get; private set; }
-        public string data { get; private set; }
+        public DateTime data { get; private set; }
         public string status { get; private set; }
         public string descr { get; private set; }
 
@@ -98,7 +98,7 @@ namespace Estoque_2Semestre
             catch (Exception ex) { throw new Exception("Erro setcodigo:" + ex.Message); }
         }
 
-        public void setdata(string i)
+        public void setdata(DateTime i)
         {
             try
             {
@@ -106,6 +106,7 @@ namespace Estoque_2Semestre
             }
             catch (Exception ex) { throw new Exception("Erro setcodigo:" + ex.Message); }
         }
+        
 
         public void setstatus(string i)
         {
@@ -190,7 +191,8 @@ namespace Estoque_2Semestre
             try
             {
                 BB = new Banco();
-                BB.comando.CommandText = "Select codpedido, codusuario, coditem, codfornecedor, qtde, valor, data, status, descr from pedido";
+                BB.comando.CommandText = "Select codpedido, codfornecedor, qtde, valor, data, status, descr from pedido";
+                //BB.comando.CommandText = "Select codpedido, codusuario, coditem, codfornecedor, qtde, valor, data, status, descr from pedido";
                 BB.comando.Prepare();
                 BB.dreader = BB.comando.ExecuteReader();
                 BB.tabela = new DataTable();

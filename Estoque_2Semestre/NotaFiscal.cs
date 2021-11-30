@@ -4,6 +4,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 
 namespace Estoque_2Semestre
 {
@@ -14,7 +15,7 @@ namespace Estoque_2Semestre
         public int numnf { get; set; }
         public DateTime dateemissao { get; set; }
         public string natoperacao { get; set; }
-        public string[] xmlimportado { get; set; }
+        public string xmlimportado { get; set; }
         public Double valor { get; set; }
 
         public void setcodigo(int i)
@@ -44,7 +45,7 @@ namespace Estoque_2Semestre
             numnf = Convert.ToInt32(i);
         }
 
-        public void setdataemissao(string i)
+        public void setdataemissao(DateTime i)
         {
             dateemissao = Convert.ToDateTime(i);
         }
@@ -54,7 +55,7 @@ namespace Estoque_2Semestre
             natoperacao = i;
         }
 
-        public void setxmlimportado(string[] i)
+        public void setxmlimportado(string i)
         {
             xmlimportado = i;
         }
